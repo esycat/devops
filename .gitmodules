@@ -1,0 +1,27 @@
+[submodule "chef/cookbooks/php"]
+	path = chef/cookbooks/php
+	url = https://github.com/opscode-cookbooks/php.git
+[submodule "chef/cookbooks/postfix"]
+	path = chef/cookbooks/postfix
+	url = https://github.com/opscode-cookbooks/postfix.git
+[submodule "chef/cookbooks/glassfish"]
+	path = chef/cookbooks/glassfish
+	url = https://github.com/realityforge/chef-glassfish.git
+[submodule "chef/cookbooks/java"]
+	path = chef/cookbooks/java
+	url = https://github.com/opscode-cookbooks/java
+[submodule "chef/cookbooks/authbind"]
+	path = chef/cookbooks/authbind
+	url = https://github.com/realityforge/chef-authbind
+[submodule "chef/cookbooks/cutlery"]
+	path = chef/cookbooks/cutlery
+	url = https://github.com/realityforge/chef-cutlery
+[submodule "chef/cookbooks/windows"]
+	path = chef/cookbooks/windows
+	url = https://github.com/opscode-cookbooks/windows
+[submodule "chef/cookbooks/chef_handler"]
+	path = chef/cookbooks/chef_handler
+	url = https://github.com/opscode-cookbooks/chef_handler
+[submodule "chef/cookbooks/gradle"]
+	path = chef/cookbooks/gradle
+	url = https://github.com/michaelklishin/gradle-chef-cookbook
