@@ -1,0 +1,40 @@
+{
+	"auto_indent": true,
+	"color_scheme": "Packages/Color Scheme - Default/Dawn.tmTheme",
+	"default_encoding": "UTF-8",
+	"dictionary": "Packages/Language - English/en_US.dic",
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": true,
+	"fold_buttons": true,
+	"font_face": "Consolas",
+	"font_size": 14,
+	"gutter": true,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage",
+		"SyncedSideBar",
+		"TrailingSpaces",
+		"Alignment"
+	],
+	"indent_subsequent_lines": true,
+	"line_numbers": true,
+	"overlay_scroll_bars": "enabled",
+	"rulers":
+	[
+		80,
+		120
+	],
+	"scroll_past_end": false,
+	"spell_check": true,
+	"tab_size": 4,
+	"theme": "Soda Light.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_automatic_white_space": true,
+	"trim_trailing_white_space_on_save": true,
+	"detect_indentation": false,
+	"word_wrap": false,
+    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", ".gradle"],
+    "drag_text": false
+}
