@@ -1,3 +1,5 @@
+OS=$(uname)
+
 # Path variable
 PATH=/Developer/usr/bin:$PATH
 PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -38,8 +40,9 @@ export EDITOR="vim"
 # Grep colors
 export GREP_OPTIONS="--color=auto"
 # export GREP_COLORS='1;32'
+
 # SSH
-if [ `uname -s` = "Darwin" ] && [ -z "$SSH_AUTH_SOCK" ] ; then
+if [ "${OS}" = "Darwin" ] && [ -z "$SSH_AUTH_SOCK" ] ; then
     export SSH_AUTH_SOCK=$(ls -t /tmp/launch-*/Listeners | head -1)
 fi
 
