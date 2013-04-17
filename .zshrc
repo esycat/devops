@@ -11,7 +11,7 @@ setopt PROMPT_SUBST
 
 # Common environment variables
 if [ -f ~/.myenv ] ; then
-  . ~/.myenv
+    . ~/.myenv
 fi
 
 # Alias definitions.

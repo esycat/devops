@@ -1,13 +1,9 @@
-alias ll="ls -ahl --color=auto"
+OS=$(uname)
+
+alias ll="ls -ahl --color=auto --group-directories-first"
 alias psx="ps -ef | grep $1"
 
-# For Gentoo
-if [ `uname -s` = "gentoo" ] ; then
-  alias ls="ls -ahlo --author --color=always --group-directories-first"
-fi
-
-# For Mac OS X
-if [ `uname -s` = "Darwin" ] ; then
-  alias mysqlstart="sudo /opt/local/share/mysql5/mysql/mysql.server start"
-  alias mysqlstop="sudo /opt/local/share/mysql5/mysql/mysql.server stop"
-fi
+case $OS in
+    Linux)  alias clip="xclip -sel clip" ;;
+    Darwin) alias clip="pbcopy" ;;
+esac
