@@ -2,6 +2,7 @@ OS=$(uname)
 
 alias ll="ls -ahl --color=auto --group-directories-first"
 alias psx="ps -ef | grep $1"
+alias ports="netstat -altu -np"
 
 case $OS in
     Linux)  alias clip="xclip -sel clip" ;;
