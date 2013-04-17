@@ -1,4 +1,5 @@
 alias ll="ls -ahl --color=auto"
+alias psx="ps -ef | grep $1"
 
 # For Gentoo
 if [ `uname -s` = "gentoo" ] ; then
