@@ -1,0 +1,36 @@
+[user]
+	name = Eugene Janusov
+	email = esycat@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+	eol = lf
+[github]
+	user = esycat
+#	token = put-your-token-here
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[alias]
+	st = status -sb
+	ci = commit
+	co = checkout
+	br = branch
+	cp = cherry-pick -x
+	mt = mergetool
+	dt = difftool
+	la = log --graph --decorate --oneline --abbrev-commit
+	rv = log -p -w --no-merges --abbrev-commit -5
+[log]
+	date = local
+	abbrevCommit = true
+[push]
+	default = upstream
+[diff]
+	tool = araxis # kdiff3 for Linux
+[merge]
+	tool = araxis # kdiff3 for Linux
+[sendemail]
+	smtpserver = smtp.gmail.com
