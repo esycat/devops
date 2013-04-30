@@ -7,7 +7,7 @@
 	eol = lf
 [github]
 	user = esycat
-#	token = put-your-token-here
+#	token =
 [color]
 	diff = auto
 	status = auto
@@ -21,8 +21,8 @@
 	cp = cherry-pick -x
 	mt = mergetool
 	dt = difftool
-	la = log --graph --decorate --oneline --abbrev-commit
-	rv = log -p -w --no-merges --abbrev-commit -5
+	la = log --graph --decorate --oneline
+	rv = log -p -w --no-merges -5
 [log]
 	date = local
 	abbrevCommit = true
