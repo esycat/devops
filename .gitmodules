@@ -25,3 +25,6 @@
 [submodule "chef/cookbooks/gradle"]
 	path = chef/cookbooks/gradle
 	url = https://github.com/michaelklishin/gradle-chef-cookbook
+[submodule "chef/cookbooks/apt"]
+	path = chef/cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt
