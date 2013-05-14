@@ -2,8 +2,10 @@ name "app-serv"
 description "Application Server"
 run_list [
     "role[base-serv]",
-    "recipe[esycat::web-serv]",
-    "recipe[esycat::app-serv]",
+    "recipe[java]",
+    "recipe[php]",
+    "recipe[glassfish]",
     "recipe[gradle::tarball]",
-    "recipe[glassfish::default]"
+    "recipe[esycat::web-serv]",
+    "recipe[esycat::app-serv]"
 ]

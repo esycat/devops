@@ -2,7 +2,7 @@ package "openjdk-7-jdk"
 package "default-jre"
 
 package "scala"
-#package "gradle"
+package "gradle"
 
 package "memcached"
 
@@ -17,10 +17,11 @@ package "php5-memcached"
 package "php5-suhosin"
 package "php-pear"
 
-#php_pear_channel "pear.phing.info"
-#php_pear_channel "pear.phpunit.de"
+php_pear_channel "pear.phing.info"
+php_pear_channel "pear.phpunit.de"
 
-#php_pear "HTTP"
+php_pear "HTTP"
 
-#php_pear "phing/phing"
-#php_pear "phpunit/phpunit"
+php_pear "phing/phing"
+php_pear "phpunit/phpunit"
+
