@@ -1,12 +1,12 @@
 [submodule "chef/cookbooks/php"]
 	path = chef/cookbooks/php
-	url = https://github.com/opscode-cookbooks/php.git
+	url = https://github.com/opscode-cookbooks/php
 [submodule "chef/cookbooks/postfix"]
 	path = chef/cookbooks/postfix
-	url = https://github.com/opscode-cookbooks/postfix.git
+	url = https://github.com/opscode-cookbooks/postfix
 [submodule "chef/cookbooks/glassfish"]
 	path = chef/cookbooks/glassfish
-	url = https://github.com/realityforge/chef-glassfish.git
+	url = https://github.com/realityforge/chef-glassfish
 [submodule "chef/cookbooks/java"]
 	path = chef/cookbooks/java
 	url = https://github.com/opscode-cookbooks/java
@@ -28,3 +28,15 @@
 [submodule "chef/cookbooks/apt"]
 	path = chef/cookbooks/apt
 	url = https://github.com/opscode-cookbooks/apt
+[submodule "chef/cookbooks/build-essential"]
+	path = chef/cookbooks/build-essential
+	url = https://github.com/opscode-cookbooks/build-essential
+[submodule "chef/cookbooks/mysql"]
+	path = chef/cookbooks/mysql
+	url = https://github.com/opscode-cookbooks/mysql
+[submodule "chef/cookbooks/openssl"]
+	path = chef/cookbooks/openssl
+	url = https://github.com/opscode-cookbooks/openssl
+[submodule "chef/cookbooks/xml"]
+	path = chef/cookbooks/xml
+	url = https://github.com/opscod-cookbooks/xml
