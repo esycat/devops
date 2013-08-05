@@ -1,11 +1,18 @@
 OS=$(uname)
 
-alias ll="ls -ahl --color=auto --group-directories-first"
+ll="-ahl --color=auto --group-directories-first"
+
 alias psx="ps -ef | grep $1"
 alias ports="netstat -altu -np"
 alias top="htop"
 
 case $OS in
-    Linux)  alias clip="xclip -sel clip" ;;
-    Darwin) alias clip="pbcopy" ;;
+    Linux)
+        alias ll="ls $ll"
+        alias clip="xclip -sel clip"
+        ;;
+    Darwin)
+        alias ll="gls $ll"
+        alias clip="pbcopy"
+        ;;
 esac
