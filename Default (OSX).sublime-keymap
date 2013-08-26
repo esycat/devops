@@ -34,7 +34,7 @@
 
     { "keys": ["super+shift+p"], "command": "move_to", "args": {"to": "brackets"} },
     { "keys": ["ctrl+`"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
-    { "keys": ["ctrl+space"], "command": "auto_complete" }
+    { "keys": ["ctrl+space"], "command": "auto_complete" },
 
     { "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser"} }
 ]

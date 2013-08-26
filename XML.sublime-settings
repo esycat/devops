@@ -1,0 +1,11 @@
+{
+	"tab_size": 4,
+	"extensions":
+	[
+		"xml",
+		"xsd",
+		"xslt",
+		"svg",
+		"vbox"
+	]
+}
