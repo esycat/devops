@@ -23,8 +23,8 @@ publishing {
         main(MavenPublication) {
             from components.java
 
-            artifact source: sourceJar,   classifier: "src"
-            artifact source: scaladocJar, classifier: "doc"
+            artifact source: sourceJar,   classifier: 'sources'
+            artifact source: scaladocJar, classifier: 'javadoc'
 
             pom.withXml {
                 asNode().children().last() + getPomConfiguration()
@@ -45,7 +45,7 @@ publishing {
 
 signing {
     sign configurations.archives
-    required { !project.ext.isSnapshot }
+    required { !project.ext.isSnapshot && gradle.taskGraph.hasTask("publish") }
 }
 
 task install {
@@ -65,10 +65,14 @@ task tagVersion(type: GitTag) {
  * Create POM config and return for use by other tasks.
  */
 def getPomConfiguration() {
-    def github = project.ext.github
-    def projectUrl = sprintf('https://github.com/%s/%s', github.username, github.repository.name)
-    def scmConnectionUrl    = sprintf('scm:git:git://github.com/%s/%s.git', github.username, github.repository.name)
-    def scmDevConnectionUrl = sprintf('scm:ssh:git@github.com:%s/%s.git', github.username, github.repository.name)
+    def scminfo = project.ext.github
+    def repo = sprintf('%s/%s', scminfo.username, scminfo.repo.name)
+
+    def scmUrl = sprintf(scminfo.repo.url, repo)
+    def scmConnectionUrl    = 'scm:git:' + sprintf(scminfo.remote.url.fetch, repo)
+    def scmDevConnectionUrl = 'scm:git:' + sprintf(scminfo.remote.url.push, repo)
+
+    def projectUrl = scmUrl
 
     return {
         name project.name
@@ -84,7 +88,7 @@ def getPomConfiguration() {
             }
         }
         scm {
-            url projectUrl
+            url scmUrl
             connection scmConnectionUrl
             developerConnection scmDevConnectionUrl
         }

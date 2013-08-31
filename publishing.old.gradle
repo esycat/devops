@@ -1,7 +1,21 @@
+import org.ajoberstar.gradle.git.tasks.*
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.ajoberstar', name: 'gradle-git', version: project.ext.plugin.git.version
+    }
+}
+
+apply plugin: 'maven'
 apply plugin: 'signing'
 
 artifacts {
-    archives sourceJar, groovydocJar
+    archives jar
+    archives sourceJar
+    archives scaladocJar
 }
 
 uploadArchives {
@@ -22,8 +36,66 @@ install.repositories.mavenInstaller {
     pom.project getPomConfiguration()
 }
 
+signing {
+    sign configurations.archives
+    required { !isSnapshot && gradle.taskGraph.hasTask("uploadArchives") }
+}
+
 task pom << {
     pom {
         project getPomConfiguration()
     }.writeTo(mavenPomDir.toString() + '/pom.xml')
+}
+
+task tagVersion(type: GitTag) {
+    tagName = version
+    message = "Release of v${version}."
+    // sign = true // JGit doesn't support signing yet
+    doLast {
+        println sprintf('A new version %s has been tagged.', tagName)
+    }
+}
+
+/**
+ * Create POM config and return for use by other tasks.
+ */
+def getPomConfiguration() {
+    def scminfo = project.ext.github
+    def repo = sprintf('%s/%s', scminfo.username, scminfo.repo.name)
+
+    def scmUrl = sprintf(scminfo.repo.url, repo)
+    def scmConnectionUrl    = 'scm:git:' + sprintf(scminfo.remote.url.fetch, repo)
+    def scmDevConnectionUrl = 'scm:git:' + sprintf(scminfo.remote.url.push, repo)
+
+    def projectUrl = scmUrl
+
+    return {
+        name project.name
+        description project.description
+        url projectUrl
+        inceptionYear '2013'
+        packaging 'jar'
+        licenses {
+            license {
+                name project.ext.license.name
+                url project.ext.license.url
+                distribution 'repo'
+            }
+        }
+        scm {
+            url scmUrl
+            connection scmConnectionUrl
+            developerConnection scmDevConnectionUrl
+        }
+        developers {
+            developer {
+                id 'esycat'
+                name 'Eugene Janusov'
+                email 'esycat@gmail.com'
+            }
+        }
+        organization {
+            name 'Persic Entertainment'
+        }
+    }
 }
