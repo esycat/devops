@@ -56,7 +56,8 @@ task tagVersion(type: GitTag) {
 def getPomConfiguration() {
     def github = project.ext.github
     def projectUrl = sprintf('https://github.com/%s/%s', github.username, github.repository.name)
-    def scmUrl = sprintf('scm:git:git@github.com:%s/%s.git', github.username, github.repository.name)
+    def scmConnectionUrl    = sprintf('scm:git:git://github.com/%s/%s.git', github.username, github.repository.name)
+    def scmDevConnectionUrl = sprintf('scm:ssh:git@github.com:%s/%s.git', github.username, github.repository.name)
 
     return {
         name project.name
@@ -73,8 +74,8 @@ def getPomConfiguration() {
         }
         scm {
             url projectUrl
-            connection scmUrl
-            developerConnection scmUrl
+            connection scmConnectionUrl
+            developerConnection scmDevConnectionUrl
         }
         developers {
             developer {
