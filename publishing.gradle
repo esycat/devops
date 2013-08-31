@@ -17,8 +17,8 @@ publishing {
         main(MavenPublication) {
             from components.java
 
-            artifact source: sourceJar, classifier: "src"
-            artifact source: docJar, classifier: "doc"
+            artifact source: sourceJar,   classifier: "src"
+            artifact source: scaladocJar, classifier: "doc"
 
             pom.withXml {
                 asNode().children().last() + getPomConfiguration()

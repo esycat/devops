@@ -1,0 +1,29 @@
+apply plugin: 'signing'
+
+artifacts {
+    archives sourceJar, groovydocJar
+}
+
+uploadArchives {
+    def sonatypeUrl = project.ext.get('sonatype.url')
+    repositories.mavenDeployer {
+        repository(url: sonatypeUrl) {
+            authentication(
+                userName: System.properties['sonatype.username'],
+                password: System.properties['sonatype.password']
+            )
+        }
+        pom.project getPomConfiguration()
+        beforeDeployment { signing.signPom it }
+    }
+}
+
+install.repositories.mavenInstaller {
+    pom.project getPomConfiguration()
+}
+
+task pom << {
+    pom {
+        project getPomConfiguration()
+    }.writeTo(mavenPomDir.toString() + '/pom.xml')
+}

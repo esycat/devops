@@ -24,7 +24,12 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
-task docJar(type: Jar) {
+task groovydocJar(type: Jar) {
+    from groovydoc
+    classifier = 'javadoc'
+}
+
+task scaladocJar(type: Jar) {
     from scaladoc
-    classifier = 'scaladoc'
+    classifier = 'javadoc'
 }
