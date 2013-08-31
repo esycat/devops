@@ -1,0 +1,51 @@
+import org.ajoberstar.gradle.git.tasks.*
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.ajoberstar', name: 'gradle-git', version: project.ext.plugin.git.version
+    }
+}
+
+apply plugin: 'maven-publish'
+apply plugin: 'scala'
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            from components.java
+
+            artifact source: sourceJar, classifier: "src"
+            artifact source: docJar, classifier: "doc"
+
+            pom.withXml {
+                asNode().children().last() + ext.sharedManifest
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url project.ext.sonatype.url
+            credentials {
+                username = System.properties['sonatype.username']
+                password = System.properties['sonatype.password']
+            }
+        }
+    }
+}
+
+task install {
+    dependsOn ':publishMainPublicationToMavenLocalRepository'
+}
+
+task tagVersion(type: GitTag) {
+    tagName = version
+    message = "Release of v${version}."
+    // sign = true // JGit doesn't support signing yet
+    doLast {
+        println sprintf('A new version %s has been tagged.', tagName)
+    }
+}

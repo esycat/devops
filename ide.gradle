@@ -1,0 +1,20 @@
+apply plugin: 'idea'
+
+idea {
+    project {
+        jdkName = JavaVersion.VERSION_1_7
+        languageLevel = JavaVersion.VERSION_1_7
+
+        ipr {
+            withXml {
+                it.node.component.find { it.@name == 'VcsDirectoryMappings' }.mapping.@vcs = 'Git'
+            }
+        }
+    }
+
+    module {
+        inheritOutputDirs = false
+        outputDir = file('build/prod')
+        testOutputDir = file('build/test')
+    }
+}

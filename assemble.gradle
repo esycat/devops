@@ -1,0 +1,30 @@
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+ext.sharedManifest = manifest {
+    attributes \
+        'Implementation-Title':   project.name,
+        'Implementation-Version': project.version,
+        'Built-JDK':  System.getProperty('java.version'),
+        'Built-By':   System.getProperty('user.name'),
+        'Built-Date': new Date(),
+        'Main-Class': project.mainClassName
+}
+
+task sourceJar(type: Jar) {
+    classifier = 'src'
+    from sourceSets.main.allSource
+}
+
+task fatJar(type: Jar) {
+    description = 'Creates a jar containing all compile and transitive runtime dependencies.'
+    classifier = 'fat'
+    manifest = project.manifest { from sharedManifest }
+    from sourceSets.main.output
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+task docJar(type: Jar) {
+    from scaladoc
+    classifier = 'scaladoc'
+}
