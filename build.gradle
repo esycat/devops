@@ -22,10 +22,10 @@ apply plugin: 'propsUtil'
 mainClassName = [group, project.name, 'Main'].join('.')
 
 apply from: 'project/util.gradle'
-apply from: 'project/scala.gradle'
 apply from: 'project/assemble.gradle'
-apply from: 'project/publishing.gradle'
+apply from: 'project/scala.gradle'
 apply from: 'project/tests.gradle'
+apply from: 'project/publishing.gradle'
 apply from: 'project/ide.gradle'
 
 repositories {

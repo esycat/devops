@@ -21,7 +21,7 @@ publishing {
             artifact source: docJar, classifier: "doc"
 
             pom.withXml {
-                asNode().children().last() + ext.sharedManifest
+                asNode().children().last() + getPomConfiguration()
             }
         }
     }
@@ -47,5 +47,44 @@ task tagVersion(type: GitTag) {
     // sign = true // JGit doesn't support signing yet
     doLast {
         println sprintf('A new version %s has been tagged.', tagName)
+    }
+}
+
+/**
+ * Create POM config and return for use by other tasks.
+ */
+def getPomConfiguration() {
+    def github = project.ext.github
+    def projectUrl = sprintf('https://github.com/%s/%s', github.username, github.repository.name)
+    def scmUrl = sprintf('scm:git:git@github.com:%s/%s.git', github.username, github.repository.name)
+
+    return {
+        name project.name
+        description project.description
+        url projectUrl
+        inceptionYear '2013'
+        packaging 'jar'
+        licenses {
+            license {
+                name project.ext.license.name
+                url project.ext.license.url
+                distribution 'repo'
+            }
+        }
+        scm {
+            url projectUrl
+            connection scmUrl
+            developerConnection scmUrl
+        }
+        developers {
+            developer {
+                id 'esycat'
+                name 'Eugene Janusov'
+                email 'esycat@gmail.com'
+            }
+        }
+        organization {
+            name 'Persic Entertainment'
+        }
     }
 }
