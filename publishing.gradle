@@ -10,7 +10,13 @@ buildscript {
 }
 
 apply plugin: 'maven-publish'
-apply plugin: 'scala'
+apply plugin: 'signing'
+
+artifacts {
+    archives jar
+    archives sourceJar
+    archives scaladocJar
+}
 
 publishing {
     publications {
@@ -35,6 +41,11 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    sign configurations.archives
+    required { !project.ext.isSnapshot }
 }
 
 task install {
