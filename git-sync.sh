@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# @author Eugene Janusov <esycat@gmail.com>
+# @license Apache License, Version 2.0
+# @scm https://gist.github.com/esycat/6617550
+
 source $HOME/.myenv
 
 realpath="realpath" # install `grealpath` for OS X
