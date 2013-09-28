@@ -13,7 +13,7 @@
     { "keys": ["alt+down"], "command": "swap_line_down" },
 
     { "keys": ["ctrl+j"], "command": "join_lines" },
-    { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"}},
+    { "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
     { "keys": ["ctrl+shift+d"], "command": "duplicate_line" },
 
     { "keys": ["ctrl+k", "ctrl+u"], "command": "upper_case" },
@@ -23,19 +23,20 @@
     { "keys": ["ctrl+r"], "command": "show_panel", "args": {"panel": "replace"} },
     { "keys": ["ctrl+shift+f"], "command": "show_panel", "args": {"panel": "find_in_files"} },
 
-    { "keys": ["ctrl+l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
-    { "keys": ["ctrl+shift+r"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true}},
-    { "keys": ["ctrl+shift+c"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+    { "keys": ["ctrl+shift+r"],     "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+    { "keys": ["ctrl+alt+shift+r"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+    { "keys": ["ctrl+l"],           "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
 
     { "keys": ["ctrl+pageup"],    "command": "prev_view" },
     { "keys": ["ctrl+pagedown"],  "command": "next_view" },
     { "keys": ["ctrl+tab"],       "command": "next_view_in_stack" },
     { "keys": ["ctrl+shift+tab"], "command": "prev_view_in_stack" },
 
+    { "keys": ["ctrl+alt+shift+a"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
     { "keys": ["ctrl+shift+p"], "command": "move_to", "args": {"to": "brackets"} },
     { "keys": ["ctrl+`"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
     { "keys": ["ctrl+space"], "command": "auto_complete" },
 
     { "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser"} },
-    { "keys": ["ctrl+alt+l"], "command": "reindent", "args": {"single_line": false}}
+    { "keys": ["ctrl+alt+l"], "command": "reindent", "args": {"single_line": false} }
 ]
