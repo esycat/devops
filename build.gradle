@@ -1,0 +1,32 @@
+description = ''
+group = 'com.esyfur'
+version = '0.1.0'
+
+defaultTasks 'clean', 'run'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'com.esyfur', name: 'gradle-expand-props', version: project.ext.get('plugin.propsUtil.version')
+    }
+}
+
+apply plugin: 'scala'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'propsUtil'
+
+mainClassName = [group, project.name, 'Main'].join('.')
+
+apply from: 'project/util.gradle'
+apply from: 'project/assemble.gradle'
+apply from: 'project/scala.gradle'
+apply from: 'project/tests.gradle'
+apply from: 'project/publishing.gradle'
+apply from: 'project/ide.gradle'
+
+repositories {
+    mavenCentral()
+}

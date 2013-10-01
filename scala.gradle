@@ -1,0 +1,16 @@
+ext.sclArt = { String artifactId ->
+    sprintf('%s_%s', artifactId, project.ext.scala.branch)
+}
+
+dependencies {
+    compile group: 'org.scala-lang', name: 'scala-library', version: project.ext.scala.version
+}
+
+compileScala {
+    scalaCompileOptions.deprecation = true
+}
+
+task scaladocJar(type: Jar) {
+    from scaladoc
+    classifier = 'javadoc'
+}

@@ -1,0 +1,100 @@
+import org.ajoberstar.gradle.git.tasks.*
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.ajoberstar', name: 'gradle-git', version: project.ext.plugin.git.version
+    }
+}
+
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+artifacts {
+    archives jar
+    archives sourceJar
+    archives scaladocJar
+}
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            from components.java
+
+            artifact source: sourceJar,   classifier: 'sources'
+            artifact source: scaladocJar, classifier: 'javadoc'
+
+            pom.withXml {
+                asNode().children().last() + getPomConfiguration()
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url project.ext.sonatype.url
+            credentials {
+                username = System.properties['sonatype.username']
+                password = System.properties['sonatype.password']
+            }
+        }
+    }
+}
+
+signing {
+    sign configurations.archives
+    required { !project.ext.isSnapshot && gradle.taskGraph.hasTask("publish") }
+}
+
+task install {
+    dependsOn ':publishMainPublicationToMavenLocalRepository'
+}
+
+task tagVersion(type: GitTag) {
+    tagName = version
+    message = "Release of v${version}."
+    // sign = true // JGit doesn't support signing yet
+    doLast {
+        println sprintf('A new version %s has been tagged.', tagName)
+    }
+}
+
+/**
+ * Create POM config and return for use by other tasks.
+ */
+def getPomConfiguration() {
+    def scmcfg = project.ext.github
+    def repo = sprintf('%s/%s', scmcfg.username, scmcfg.repo.name)
+
+    return {
+        name project.name
+        description project.description
+        url sprintf(scmcfg.repo.url, repo)
+        inceptionYear '2013'
+        packaging 'jar'
+        licenses {
+            license {
+                name project.ext.license.name
+                url project.ext.license.url
+                distribution 'repo'
+            }
+        }
+        scm {
+            url sprintf(scmcfg.repo.url, repo)
+            connection 'scm:git:' + sprintf(scmcfg.remote.url.fetch, repo)
+            developerConnection 'scm:git:' + sprintf(scmcfg.remote.url.push, repo)
+        }
+        developers {
+            developer {
+                id 'esycat'
+                name 'Eugene Janusov'
+                email 'esycat@gmail.com'
+            }
+        }
+        organization {
+            name 'Persic Entertainment'
+        }
+    }
+}
