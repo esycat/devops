@@ -1,0 +1,13 @@
+*        text=auto
+
+*.java   text eol=lf diff=java
+*.scala  text eol=lf
+*.groovy text eol=lf
+*.cs     text eol=lf diff=csharp
+*.py     text eol=lf diff=python
+*.php    text eol=lf diff=php
+
+*.html   text eol=lf diff=html
+*.css    text eol=lf
+*.js     text eol=lf
+*.sql    text eol=lf
