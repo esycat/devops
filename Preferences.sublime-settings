@@ -1,0 +1,48 @@
+{
+	"auto_indent": true,
+	"color_scheme": "Packages/Color Scheme - Default/Dawn.tmTheme",
+	"default_encoding": "UTF-8",
+	"detect_indentation": false,
+	"dictionary": "Packages/Language - English/en_US.dic",
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": true,
+	"fold_buttons": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".gradle",
+		".sass-cache"
+	],
+	"font_face": "Consolas",
+	"font_size": 14,
+	"gutter": true,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Alignment",
+		"TrailingSpaces",
+		"Vintage",
+		"SyncedSideBar"
+	],
+	"indent_subsequent_lines": true,
+	"line_numbers": true,
+	"overlay_scroll_bars": "enabled",
+	"rulers":
+	[
+		80,
+		120
+	],
+	"scroll_past_end": false,
+	"soda_classic_tabs": true,
+	"spell_check": true,
+	"tab_size": 4,
+	"theme": "Soda Light 3.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_automatic_white_space": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false
+}
