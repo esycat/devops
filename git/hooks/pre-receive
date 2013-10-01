@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+GIT_BIN="git"
+PHP_BIN="php"
+PHP_LINT_PATTERN="\.php$"
+PHP_LINT_RETVAL=0
+
+script_dir=$(dirname `realpath $0`)
+
+while read oldrev newrev refname ; do
+    refhead=${refname#refs/heads/}
+    # echo $oldrev $newrev $refname $refhead
+    source ${script_dir}/authorship
+    source ${script_dir}/code-audit
+done
+
+if [ $PHP_LINT_RETVAL -ne 0 ] ; then
+    echo "Ouch, something's wrong in your PHP conservatory…"
+    exit 102
+fi
+
+exit

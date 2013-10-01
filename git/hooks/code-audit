@@ -1,0 +1,23 @@
+#!/bin/zsh
+#
+# Code audit pre-reveive hook for git
+#
+# @author Eugene Janusov <esycat@gmail.com>
+#
+
+FILES_CHANGED=$($GIT_BIN diff-tree -r --diff-filter=ACMR --name-only $oldrev..$newrev | egrep "$PHP_LINT_PATTERN")
+
+tempfile=$(mktemp -q --tmpdir 'codeaudit.XXXXXXXX')
+
+for filepath in $FILES_CHANGED ; do
+    $GIT_BIN show "$newrev:$filepath" > "$tempfile"
+
+    # PHP Lint
+    OUTPUT=$($PHP_BIN -l $tempfile 2>&1 1>/dev/null)
+    if [ $? -ne 0 ] ; then
+        PHP_LINT_RETVAL=1
+        echo "Lint failed on \`${filepath}\`."
+    fi
+done
+
+rm $tempfile

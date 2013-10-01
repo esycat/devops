@@ -1,0 +1,88 @@
+#!/bin/bash
+#
+# PHP CodeSniffer pre-reveive hook for git
+#
+# @author Eugene Janusov <esycat@gmail.com>
+#
+# Partially inspired by pre-commit hook
+# by Soenke Ruempler <soenke@ruempler.eu>
+#
+
+# Read config
+CONFIG_FILE=$(dirname $0)/code-audit.conf
+if [ ! -f "$CONFIG_FILE" ] ; then
+    echo "Config file not found."
+    exit 1
+fi
+
+. $CONFIG_FILE
+. $(dirname $0)/code-audit-prepare
+
+# We can't use phpcs' built-in --ignore functionality here,
+# thus converting the list of patterns into bash-friendly format
+PHPCS_IGNORE=$(echo "$PHPCS_IGNORE" | tr "," "\n" )
+
+while read oldrev newrev refname ; do
+    REFHEAD=${refname##refs/heads/}
+
+    committer_name=$(git log -1 --format=format:%cn $newrev)
+    committer_email=$(git log -1 --format=format:%ce $newrev)
+
+    if [ "$committer_name" == "unknown" ] ; then
+        echo "Commits without proper acknowledgement are not permitted."
+        exit 101
+    fi
+
+    FILES_CHANGED=$(git diff-tree --diff-filter=ACMR -r $oldrev..$newrev | awk '{print $6}' | egrep "$PHP_LINT_PATTERN" -- )
+
+    tempfile=$(mktemp -t 'codeaudit.XXXXXXXX')
+
+    for filepath in $FILES_CHANGED ; do
+        git show "$newrev:$filepath" > "$tempfile"
+
+        # PHP Lint
+        OUTPUT=$($PHP_BIN -l $tempfile 2>&1 1>/dev/null)
+        if [ $? -ne 0 ] ; then
+            LINT_RETVAL=1
+            echo "PHP Lint failed on \`${filepath}'."
+
+        fi
+
+        # PHP CodeSniffer
+        if [ -f "${PHPCS_REFHEADS_DIR}/${REFHEAD}/.phpcs" ] ; then
+            for pattern in $PHPCS_IGNORE ; do
+                expr "$filepath" : "$pattern" > /dev/null && continue 2
+            done
+
+            OUTPUT=$($REVIEW_CMD $tempfile)
+            if [ $? -ne 0 ] ; then
+                PHPCS_RETVAL=1
+
+                errmsg="PHP CodeSniffer failed on \`$filepath'."
+                echo $errmsg
+
+                # Blackmail the sinner
+                # N.B. heirloom-mailx should be installed, not bsd-mailx
+                echo "$OUTPUT" | mail -es "$errmsg" -r "$WEBMASTER" $committer_email
+
+                if [ ! -z "$PHPCS_LOGFILE" ] ; then
+                    echo `date` $filepath $committer_email >> $PHPCS_LOGFILE
+                fi
+            fi
+        fi
+    done
+
+    rm $tempfile
+done
+
+if [ $LINT_RETVAL -ne 0 ] ; then
+    echo "Ouch, something wrong in your PHP conservatory..."
+    exit 102
+fi
+
+if [ $PHPCS_RETVAL -ne 0 ] ; then
+    echo "Time to atone for your code formatting sins..."
+    exit 103
+fi
+
+exit
