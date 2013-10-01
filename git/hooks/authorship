@@ -10,8 +10,6 @@ FORBIDDEN_COMMITTERS=(unknown root)
 committer_name=$($GIT_BIN log -1 --format=format:%cn $newrev)
 committer_email=$($GIT_BIN log -1 --format=format:%ce $newrev)
 
-echo $committer_name, $committer_email
-
 if [ ${FORBIDDEN_COMMITTERS[(i)$committer_name]} -le ${#FORBIDDEN_COMMITTERS} ] ; then
     echo "Commits without proper acknowledgment are not permitted."
     exit 101
