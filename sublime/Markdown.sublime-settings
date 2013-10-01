@@ -1,0 +1,10 @@
+{
+    "trim_trailing_white_space_on_save": false,
+    "font_face": "Monaco",
+    "translate_tabs_to_spaces": true,
+    "word_wrap": true,
+    "wrap_width": 80,
+    "line_padding_top": 2,
+    "draw_centered": false,
+    "highlight_line": true
+}
