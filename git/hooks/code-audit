@@ -5,9 +5,10 @@
 # @author Eugene Janusov <esycat@gmail.com>
 #
 
-FILES_CHANGED=$($GIT_BIN diff-tree -r --diff-filter=ACMR --name-only $oldrev..$newrev | egrep "$PHP_LINT_PATTERN")
-
 tempfile=$(mktemp -q --tmpdir 'codeaudit.XXXXXXXX')
+
+# PHP Files
+FILES_CHANGED=$($GIT_BIN diff-tree -r --diff-filter=ACMR --name-only $oldrev..$newrev | egrep "$PHP_LINT_PATTERN")
 
 for filepath in $FILES_CHANGED ; do
     $GIT_BIN show "$newrev:$filepath" > "$tempfile"
@@ -16,6 +17,20 @@ for filepath in $FILES_CHANGED ; do
     OUTPUT=$($PHP_BIN -l $tempfile 2>&1 1>/dev/null)
     if [ $? -ne 0 ] ; then
         PHP_LINT_RETVAL=1
+        echo "Lint failed on \`${filepath}\`."
+    fi
+done
+
+# Puppet Files
+FILES_CHANGED=$($GIT_BIN diff-tree -r --diff-filter=ACMR --name-only $oldrev..$newrev | egrep "$PUPPET_LINT_PATTERN")
+
+for filepath in $FILES_CHANGED ; do
+    $GIT_BIN show "$newrev:$filepath" > "$tempfile"
+
+    # Puppet Lint
+    OUTPUT=$($PUPPET_LINT_BIN $tempfile 2>&1 1>/dev/null)
+    if [ $? -ne 0 ] ; then
+        PUPPET_LINT_LINT_RETVAL=1
         echo "Lint failed on \`${filepath}\`."
     fi
 done
