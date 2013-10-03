@@ -1,4 +1,6 @@
 [
+    { "keys": ["super+shift+s"], "command": "save_all" },
+    { "keys": ["super+alt+shift+s"], "command": "prompt_save_as" },
     { "keys": ["super+shift+w"], "command": "close_all" },
 
     { "keys": ["super+z"],       "command": "undo" },
