@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 #
 # Code audit pre-reveive hook for git
 #
@@ -11,10 +11,10 @@ tempfile=$(mktemp -q --tmpdir 'codeaudit.XXXXXXXX')
 FILES_CHANGED=$($GIT_BIN diff-tree -r --diff-filter=ACMR --name-only $oldrev..$newrev | egrep "$PHP_LINT_PATTERN")
 
 for filepath in $FILES_CHANGED ; do
-    $GIT_BIN show "$newrev:$filepath" > "$tempfile"
+    $GIT_BIN show $newrev:"$filepath" > "$tempfile"
 
     # PHP Lint
-    OUTPUT=$($PHP_BIN -l $tempfile 2>&1 1>/dev/null)
+    OUTPUT=$($PHP_BIN -l "$tempfile" 1>/dev/null 2>&1)
     if [ $? -ne 0 ] ; then
         PHP_LINT_RETVAL=1
         echo "Lint failed on \`${filepath}\`."
@@ -25,10 +25,10 @@ done
 FILES_CHANGED=$($GIT_BIN diff-tree -r --diff-filter=ACMR --name-only $oldrev..$newrev | egrep "$PUPPET_LINT_PATTERN")
 
 for filepath in $FILES_CHANGED ; do
-    $GIT_BIN show "$newrev:$filepath" > "$tempfile"
+    $GIT_BIN show $newrev:"$filepath" > "$tempfile"
 
     # Puppet Lint
-    OUTPUT=$($PUPPET_LINT_BIN $tempfile 2>&1 1>/dev/null)
+    OUTPUT=$($PUPPET_LINT_BIN "$tempfile" 1>/dev/null 2>&1)
     if [ $? -ne 0 ] ; then
         PUPPET_LINT_LINT_RETVAL=1
         echo "Lint failed on \`${filepath}\`."

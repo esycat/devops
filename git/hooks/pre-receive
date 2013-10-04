@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 script_dir=$(dirname `realpath $0`)
 . ${script_dir}/.config

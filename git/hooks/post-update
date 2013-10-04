@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 REMOTE="bb" # "bb" is the conventional name for BitBucket remote.
 
-if [ "$(git remote | fgrep $REMOTE)" == "$REMOTE" ] ; then
+if [[ "$(git remote | fgrep $REMOTE)" == "$REMOTE" ]] ; then
     echo "Pushing to BitBucket…"
     git push -q -u --all   $REMOTE
     git push -q    --tags  $REMOTE
