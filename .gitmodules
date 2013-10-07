@@ -43,3 +43,15 @@
 [submodule "chef/cookbooks/rethinkdb"]
 	path = chef/cookbooks/rethinkdb
 	url = https://github.com/esycat/chef-rethinkdb-cookbook.git
+[submodule "chef/cookbooks/aws"]
+	path = chef/cookbooks/aws
+	url = https://github.com/opscode-cookbooks/aws.git
+[submodule "chef/cookbooks/partial_search"]
+	path = chef/cookbooks/partial_search
+	url = https://github.com/opscode-cookbooks/partial_search.git
+[submodule "chef/cookbooks/python"]
+	path = chef/cookbooks/python
+	url = https://github.com/opscode-cookbooks/python.git
+[submodule "chef/cookbooks/homebrew"]
+	path = chef/cookbooks/homebrew
+	url = https://github.com/opscode-cookbooks/homebrew.git
