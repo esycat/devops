@@ -40,3 +40,6 @@
 [submodule "chef/cookbooks/xml"]
 	path = chef/cookbooks/xml
 	url = https://github.com/opscode-cookbooks/xml
+[submodule "chef/cookbooks/rethinkdb"]
+	path = chef/cookbooks/rethinkdb
+	url = https://github.com/esycat/chef-rethinkdb-cookbook.git
