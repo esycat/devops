@@ -1,0 +1,42 @@
+[submodule "chef/cookbooks/php"]
+	path = chef/cookbooks/php
+	url = https://github.com/opscode-cookbooks/php
+[submodule "chef/cookbooks/postfix"]
+	path = chef/cookbooks/postfix
+	url = https://github.com/opscode-cookbooks/postfix
+[submodule "chef/cookbooks/glassfish"]
+	path = chef/cookbooks/glassfish
+	url = https://github.com/realityforge/chef-glassfish
+[submodule "chef/cookbooks/java"]
+	path = chef/cookbooks/java
+	url = https://github.com/opscode-cookbooks/java
+[submodule "chef/cookbooks/authbind"]
+	path = chef/cookbooks/authbind
+	url = https://github.com/realityforge/chef-authbind
+[submodule "chef/cookbooks/cutlery"]
+	path = chef/cookbooks/cutlery
+	url = https://github.com/realityforge/chef-cutlery
+[submodule "chef/cookbooks/windows"]
+	path = chef/cookbooks/windows
+	url = https://github.com/opscode-cookbooks/windows
+[submodule "chef/cookbooks/chef_handler"]
+	path = chef/cookbooks/chef_handler
+	url = https://github.com/opscode-cookbooks/chef_handler
+[submodule "chef/cookbooks/gradle"]
+	path = chef/cookbooks/gradle
+	url = https://github.com/michaelklishin/gradle-chef-cookbook
+[submodule "chef/cookbooks/apt"]
+	path = chef/cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt
+[submodule "chef/cookbooks/build-essential"]
+	path = chef/cookbooks/build-essential
+	url = https://github.com/opscode-cookbooks/build-essential
+[submodule "chef/cookbooks/mysql"]
+	path = chef/cookbooks/mysql
+	url = https://github.com/opscode-cookbooks/mysql
+[submodule "chef/cookbooks/openssl"]
+	path = chef/cookbooks/openssl
+	url = https://github.com/opscode-cookbooks/openssl
+[submodule "chef/cookbooks/xml"]
+	path = chef/cookbooks/xml
+	url = https://github.com/opscode-cookbooks/xml
