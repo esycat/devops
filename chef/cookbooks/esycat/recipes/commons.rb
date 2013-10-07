@@ -1,20 +1,22 @@
 package "coreutils"
-package "aptitude"
-
+package "bash-completion"
 package "zsh"
 package "wget"
 package "vim"
 package "mc"
 package "p7zip-full"
-
+package "realpath"
 package "sysstat"
 package "dstat"
 package "htop"
-
 package "whois"
-
-package "git"
-package "subversion"
-
+package "rsync"
 package "xpdf"
 package "pwgen"
+package "git"
+
+if %w{debian}.include?(node.platform_family)
+    package "aptitude"
+    package "software-properties-common"
+    package "python-software-properties"
+end

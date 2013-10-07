@@ -1,3 +1,1 @@
-package "snmp"
-package "snmpd"
-
+include_recipe "esycat::net"
