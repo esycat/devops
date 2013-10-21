@@ -3,6 +3,5 @@ package "nfs-kernel-server"
 package "snmp"
 package "snmpd"
 package "ethtool"
-package "smbfs"
-
+package "fusesmb"
 
