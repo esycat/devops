@@ -1,7 +1,9 @@
 include_recipe 'esycat::net-utils'
 include_recipe 'esycat::dev-utils'
-include_recipe 'esycat::java'
+include_recipe 'esycat::dev-java'
 include_recipe 'esycat::python'
+include_recipe 'esycat::gnome'
+include_recipe 'esycat::web'
 
 apt_repository 'dropbox' do
     uri          'http://linux.dropbox.com/ubuntu'
@@ -29,26 +31,7 @@ apt_repository 'btsync' do
     key          'D294A752'
 end
 
-package 'gnome-tweak-tool'
-package 'gnome-shell-extensions'
 
-package 'chromium-browser'
-package 'chromium-browser-l10n'
-package 'chromium-codecs-ffmpeg'
-package 'chromium-codecs-ffmpeg-extra'
-package 'webaccounts-chromium-extension'
-
-package 'firefox'
-package 'firefox-globalmenu'
-
-package 'thunderbird'
-package 'thunderbird-gnome-support'
-package 'thunderbird-globalmenu'
-
-package 'transmission-gtk'
-package 'transmission-cli'
-
-package 'gajim'
 package 'gimp'
 package 'nitrogen'
 

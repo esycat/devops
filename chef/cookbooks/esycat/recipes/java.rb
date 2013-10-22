@@ -4,8 +4,10 @@ apt_repository 'webupd8team-java' do
     components   ['main']
 end
 
-package 'openjdk-7-jdk'
+package 'openjdk-7-jre'
 package 'default-jre'
-package 'scala'
-package 'groovy'
-include_recipe 'gradle::tarball'
+
+package 'oracle-java7-installer'
+package 'oracle-java8-installer'
+
+package 'oracle-java7-set-default'
