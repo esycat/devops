@@ -1,4 +1,4 @@
-include_recipe 'esycat::net'
+include_recipe 'esycat::net-utils'
 include_recipe 'esycat::dev-utils'
 include_recipe 'esycat::java'
 include_recipe 'esycat::python'
@@ -54,5 +54,3 @@ package 'nitrogen'
 
 package 'gitg'
 package 'sublime-text'
-
-package 'mysql-client'

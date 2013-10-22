@@ -1,4 +1,4 @@
-include_recipe 'esycat::stat-utils'
+include_recipe 'esycat::sys-utils'
 include_recipe 'esycat::fs-utils'
 
 package 'coreutils'
@@ -16,6 +16,7 @@ package 'xpdf'
 package 'pwgen'
 package 'git'
 package 'ssh'
+package 'screen'
 
 if %w{debian}.include?(node.platform_family)
     package 'aptitude'
