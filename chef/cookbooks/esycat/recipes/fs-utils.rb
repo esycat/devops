@@ -1,4 +1,4 @@
-package "parted"
-package "xfsprogs"
-package "fuse"
+package 'parted'
+package 'xfsprogs'
+package 'fuse'
 

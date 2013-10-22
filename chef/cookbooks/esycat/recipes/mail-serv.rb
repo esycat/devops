@@ -1,2 +1,2 @@
-package "postfix"
+package 'postfix'
 

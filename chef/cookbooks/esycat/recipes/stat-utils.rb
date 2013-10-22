@@ -1,4 +1,4 @@
-package "sysstat"
-package "dstat"
-package "htop"
+package 'sysstat'
+package 'dstat'
+package 'htop'
 
