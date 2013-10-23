@@ -35,5 +35,7 @@ end
 package 'gimp'
 package 'nitrogen'
 
-package 'gitg'
 package 'sublime-text'
+package 'gitg'
+package 'kdiff3'
+
