@@ -4,6 +4,7 @@ include_recipe 'esycat::dev-java'
 include_recipe 'esycat::python'
 include_recipe 'esycat::gnome'
 include_recipe 'esycat::web'
+include_recipe 'esycat::protobuf'
 
 apt_repository 'dropbox' do
     uri          'http://linux.dropbox.com/ubuntu'
