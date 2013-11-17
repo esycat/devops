@@ -17,6 +17,7 @@ package 'pwgen'
 package 'git'
 package 'ssh'
 package 'screen'
+package 'ntp'
 
 if %w{debian}.include?(node.platform_family)
     package 'aptitude'
