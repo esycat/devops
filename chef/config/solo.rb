@@ -6,8 +6,9 @@ cookbook_path [
     File.realpath(File.join(config_dir, 'cookbooks'))
 ]
 
-#role_path [
-#    '/var/chef/roles',
-#    File.realpath(File.join(config_dir, 'roles'))
-#]
+# role_path [
+#     '/var/chef/roles',
+#     File.realpath(File.join(config_dir, 'roles'))
+# ]
 
+role_path '/var/chef/roles'

@@ -6,4 +6,3 @@ run_list [
     "recipe[rethinkdb]",
     "recipe[esycat::db-serv]"
 ]
-
