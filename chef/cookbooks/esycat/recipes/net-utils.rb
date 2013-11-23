@@ -7,3 +7,11 @@ package 'snmp'
 package 'snmpd'
 package 'ethtool'
 package 'netcat-openbsd'
+
+service 'autofs' do
+    action [ :enable, :start ]
+end
+
+service 'nfs-kernel-server' do
+    action [ :enable, :start ]
+end

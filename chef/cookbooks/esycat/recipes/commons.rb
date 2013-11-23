@@ -24,3 +24,7 @@ if %w{debian}.include?(node.platform_family)
     package 'software-properties-common'
     package 'python-software-properties'
 end
+
+service 'ntp' do
+    action :enable
+end
