@@ -18,8 +18,6 @@ apply plugin: 'application'
 apply plugin: 'idea'
 apply plugin: 'propsUtil'
 
-mainClassName = [group, project.name, 'Main'].join('.')
-
 apply from: 'project/util.gradle'
 apply from: 'project/assemble.gradle'
 apply from: 'project/scala.gradle'
