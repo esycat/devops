@@ -33,6 +33,7 @@ apt_repository 'btsync' do
 end
 
 
+package 'xclip'
 package 'gimp'
 package 'nitrogen'
 
