@@ -1,7 +1,7 @@
 apply plugin: 'scala'
 
 ext.sclArt = { String artifactId ->
-    sprintf('%s_%s', artifactId, project.ext.scala.branch)
+    sprintf('%s_%s', artifactId, config.scala.branch)
 }
 
 repositories {
@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.scala-lang', name: 'scala-library', version: project.ext.scala.version
+    compile group: 'org.scala-lang', name: 'scala-library', version: config.scala.version
 }
 
 compileScala {

@@ -13,14 +13,14 @@ buildscript {
     }
 }
 
-apply plugin: 'scala'
 apply plugin: 'application'
-apply plugin: 'idea'
 apply plugin: 'propsUtil'
 
 apply from: 'project/util.gradle'
 apply from: 'project/assemble.gradle'
 apply from: 'project/scala.gradle'
+// apply from: 'project/groovy.gradle'
+// apply from: 'project/plugin.gradle'
 apply from: 'project/tests.gradle'
 apply from: 'project/publishing.gradle'
 apply from: 'project/ide.gradle'
