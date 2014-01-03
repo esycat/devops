@@ -1,6 +1,3 @@
 apply plugin: 'groovy'
 
-task groovydocJar(type: Jar) {
-    from groovydoc
-    classifier = 'javadoc'
-}
+tasks.javadocJar.from groovydoc

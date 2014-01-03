@@ -19,10 +19,7 @@ compileScala {
     scalaCompileOptions.deprecation = true
 }
 
-task scaladocJar(type: Jar) {
-    from scaladoc
-    classifier = 'javadoc'
-}
+tasks.javadocJar.from scaladoc
 
 tasks.withType(ScalaCompile) {
     scalaCompileOptions.useAnt = false

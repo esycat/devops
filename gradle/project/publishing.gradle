@@ -16,7 +16,7 @@ apply plugin: 'maven'
 artifacts {
     archives jar
     archives sourceJar
-    // archives scaladocJar
+    archives javadocJar
 }
 
 publishing {
@@ -24,8 +24,8 @@ publishing {
         main(MavenPublication) {
             from components.java
 
-            artifact source: sourceJar,   classifier: 'sources'
-            // artifact source: scaladocJar, classifier: 'javadoc'
+            artifact source: sourceJar,  classifier: 'sources'
+            artifact source: javadocJar, classifier: 'javadoc'
 
             pom.withXml {
                 asNode().children().last() + getPomConfiguration()
@@ -34,7 +34,7 @@ publishing {
     }
     repositories {
         mavenLocal()
-        if (project.ext.has('sonatype')) {
+        if (config.containsKey('sonatype')) {
             maven {
                 url config.sonatype.url
                 credentials {
@@ -112,9 +112,8 @@ def getPomConfiguration() {
 }
 
 uploadArchives {
-    mustRunAfter tagVersion
     repositories.mavenDeployer {
-        if (project.ext.has('sonatype')) {
+        if (config.containsKey('sonatype')) {
             repository(url: config.sonatype.url) {
                 authentication(
                     userName: System.properties['sonatype.username'],
