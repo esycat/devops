@@ -1,0 +1,117 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
+import com.eriwen.gradle.js.tasks.*
+import com.eriwen.gradle.css.tasks.*
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'com.eriwen', name: 'gradle-js-plugin',  version: project.ext.get('plugin.js.version')
+        classpath group: 'com.eriwen', name: 'gradle-css-plugin', version: project.ext.get('plugin.css.version')
+    }
+}
+
+apply plugin: 'js'
+apply plugin: 'css'
+
+// Declare JavaScript sources
+javascript.source {
+    def defaultSourceSet = {
+        srcDir Paths.get(projectDir.toString(), artifactDir, jsSrcDir).toFile()
+        include '**/*.js'
+        exclude '**/*.min.js'
+        exclude project.name + '.js'
+    }
+    dev.js  defaultSourceSet
+    prod.js defaultSourceSet
+}
+
+// Declare StyleSheet sources
+css.source {
+    def defaultSourceSet = {
+        srcDir Paths.get(projectDir.toString(), artifactDir, cssSrcDir).toFile()
+        include '*.css'
+        exclude '*.min.css'
+        exclude project.name + '.css'
+    }
+    dev.css  defaultSourceSet
+    prod.css defaultSourceSet
+}
+
+/**
+ * @return List Command line arguments for SCSS
+ */
+def getScssArgs() {
+    def args = []
+
+    args.add('--force')
+    args.add('--no-cache')
+
+    if (env == 'dev') {
+        args.add('--debug-info')
+    }
+    else {
+        args.add('--style')
+        args.add('compressed')
+    }
+
+    args.add Paths.get(scssSrcDir, project.name + ".scss")
+    args.add Paths.get(cssDestDir, project.name + ".css")
+
+    args
+}
+
+def getTargetFile(String dir, String type, String suffix = null) {
+    def name = project.name + (suffix ? '.' + suffix : '') + '.' + type
+    def path = Paths.get(projectDir.toString(), artifactDir, dir, name)
+    path.toFile()
+}
+
+task ('clean-js') << {
+    getTargetFile(jsDestDir, 'js').delete()
+    getTargetFile(jsDestDir, 'js', 'min').delete()
+}
+
+task ('combine-js', type: CombineJsTask) {
+    source = javascript.source[env].js.files
+    dest = getTargetFile(jsDestDir, 'js')
+}
+
+task ('minify-js', type: MinifyJsTask) {
+    source = tasks['combine-js']
+    dest = getTargetFile(jsDestDir, 'js', 'min')
+}
+
+task ('compress-js', type: GzipJsTask) {
+    source = tasks['minify-js']
+    dest = getTargetFile(jsDestDir, 'js', 'min')
+}
+
+task ('clean-css') << {
+    getTargetFile(cssDestDir, 'css').delete()
+    getTargetFile(cssDestDir, 'css', 'min').delete()
+}
+
+task ('combine-css', type: CombineCssTask) {
+    source = css.source[env].css.files
+    dest = getTargetFile(cssDestDir, 'css')
+}
+
+task ('minify-css', type: MinifyCssTask) {
+    source = tasks['combine-css']
+    dest = getTargetFile(cssDestDir, 'css', 'min')
+}
+
+task ('compress-css', type: GzipCssTask) {
+    source = tasks['minify-css']
+    dest = getTargetFile(cssDestDir, 'css', 'min')
+}
+
+task ('compile-css', type: Exec) {
+    workingDir Paths.get(projectDir.toString(), artifactDir).toFile()
+    executable 'scss'
+    args getScssArgs()
+}
