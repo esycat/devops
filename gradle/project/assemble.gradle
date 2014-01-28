@@ -3,8 +3,8 @@ apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
-if (project.getPlugins().hasPlugin('application') && !project.mainClassName.size()) {
-    mainClassName = [group, project.name, 'Main'].join('.')
+if (getPlugins().hasPlugin('application') && !mainClassName.size()) {
+    mainClassName = [group, name, 'Main'].join('.')
 }
 
 ext.sharedManifest = manifest {
