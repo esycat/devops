@@ -34,12 +34,15 @@ publishing {
     }
     repositories {
         mavenLocal()
-        if (config.containsKey('sonatype')) {
+        if (config.containsKey('publish')) {
+            def repoUrl = project.isSnapshot ? config.mvn.repos.snapshots.url : config.mvn.repos.releases.url
+            def repoAuth = config.publish.credentials
+
             maven {
-                url config.sonatype.url
+                url repoUrl
                 credentials {
-                    username = System.properties['sonatype.username']
-                    password = System.properties['sonatype.password']
+                    username repoAuth.username
+                    password repoAuth.password
                 }
             }
         }
@@ -113,12 +116,12 @@ def getPomConfiguration() {
 
 uploadArchives {
     repositories.mavenDeployer {
-        if (config.containsKey('sonatype')) {
-            repository(url: config.sonatype.url) {
-                authentication(
-                    userName: System.properties['sonatype.username'],
-                    password: System.properties['sonatype.password']
-                )
+        if (config.containsKey('publish')) {
+            def repoUrl = project.isSnapshot ? config.mvn.repos.snapshots.url : config.mvn.repos.releases.url
+            def repoAuth = config.publish.credentials
+
+            repository(url: repoUrl) {
+                authentication(userName: repoAuth.username, password: repoAuth.password)
             }
         }
         pom.project getPomConfiguration()
