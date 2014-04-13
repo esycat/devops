@@ -1,7 +1,9 @@
 import java.nio.file.Files
 import java.nio.file.Paths
 
+import com.eriwen.gradle.js.JsPlugin
 import com.eriwen.gradle.js.tasks.*
+import com.eriwen.gradle.css.CssPlugin
 import com.eriwen.gradle.css.tasks.*
 
 buildscript {
@@ -14,8 +16,10 @@ buildscript {
     }
 }
 
-apply plugin: 'js'
-apply plugin: 'css'
+//apply plugin: 'js'
+//apply plugin: 'css'
+apply plugin: JsPlugin
+apply plugin: CssPlugin
 
 // Declare JavaScript sources
 javascript.source {

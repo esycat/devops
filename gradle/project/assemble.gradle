@@ -3,7 +3,7 @@ apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
-if (getPlugins().hasPlugin('application') && !mainClassName.size()) {
+if (getPlugins().hasPlugin('application') && (mainClassName == null)) {
     mainClassName = [group, name, 'Main'].join('.')
 }
 
@@ -35,4 +35,8 @@ task fatJar(type: Jar) {
     manifest = project.manifest { from sharedManifest }
     from sourceSets.main.output
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+jar {
+    manifest = project.manifest { from sharedManifest }
 }
