@@ -32,11 +32,18 @@ apt_repository 'btsync' do
     key          'D294A752'
 end
 
+apt_repository 'finalterm' do
+    uri          'http://ppa.launchpad.net/finalterm/daily/ubuntu'
+    distribution node['lsb']['codename']
+    components   ['main']
+end
+
 
 package 'xclip'
 package 'gimp'
 package 'nitrogen'
 
+package 'finalterm'
 package 'sublime-text'
 package 'gitg'
 package 'kdiff3'
