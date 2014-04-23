@@ -2,8 +2,11 @@
 
 . /etc/default/chef-client
 
-script_dir="$(dirname $(realpath $0))"
-#config_dir="${script_dir}/config"
-config_dir="/etc/chef"
+config_dir=$(dirname $CONFIG)
+
+if [ ! -d "$config_dir" ] ; then
+    echo "\`${config_dir}\` is not a directory"
+    exit 1
+fi
 
 chef-solo -c "${config_dir}/solo.rb" -j "${config_dir}/node.json"
