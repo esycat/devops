@@ -1,57 +1,76 @@
 [submodule "chef/cookbooks/php"]
 	path = chef/cookbooks/php
 	url = https://github.com/opscode-cookbooks/php
+	branch = master
 [submodule "chef/cookbooks/postfix"]
 	path = chef/cookbooks/postfix
 	url = https://github.com/opscode-cookbooks/postfix
+	branch = master
 [submodule "chef/cookbooks/glassfish"]
 	path = chef/cookbooks/glassfish
 	url = https://github.com/realityforge/chef-glassfish
+	branch = master
 [submodule "chef/cookbooks/java"]
 	path = chef/cookbooks/java
 	url = https://github.com/opscode-cookbooks/java
+	branch = master
 [submodule "chef/cookbooks/authbind"]
 	path = chef/cookbooks/authbind
 	url = https://github.com/realityforge/chef-authbind
+	branch = master
 [submodule "chef/cookbooks/cutlery"]
 	path = chef/cookbooks/cutlery
 	url = https://github.com/realityforge/chef-cutlery
+	branch = master
 [submodule "chef/cookbooks/windows"]
 	path = chef/cookbooks/windows
 	url = https://github.com/opscode-cookbooks/windows
+	branch = master
 [submodule "chef/cookbooks/chef_handler"]
 	path = chef/cookbooks/chef_handler
 	url = https://github.com/opscode-cookbooks/chef_handler
+	branch = master
 [submodule "chef/cookbooks/gradle"]
 	path = chef/cookbooks/gradle
 	url = https://github.com/michaelklishin/gradle-chef-cookbook
+	branch = master
 [submodule "chef/cookbooks/apt"]
 	path = chef/cookbooks/apt
 	url = https://github.com/opscode-cookbooks/apt
+	branch = master
 [submodule "chef/cookbooks/build-essential"]
 	path = chef/cookbooks/build-essential
 	url = https://github.com/opscode-cookbooks/build-essential
+	branch = master
 [submodule "chef/cookbooks/mysql"]
 	path = chef/cookbooks/mysql
 	url = https://github.com/opscode-cookbooks/mysql
+	branch = master
 [submodule "chef/cookbooks/openssl"]
 	path = chef/cookbooks/openssl
 	url = https://github.com/opscode-cookbooks/openssl
+	branch = master
 [submodule "chef/cookbooks/xml"]
 	path = chef/cookbooks/xml
 	url = https://github.com/opscode-cookbooks/xml
+	branch = master
 [submodule "chef/cookbooks/rethinkdb"]
 	path = chef/cookbooks/rethinkdb
 	url = https://github.com/esycat/chef-rethinkdb-cookbook.git
+	branch = master
 [submodule "chef/cookbooks/aws"]
 	path = chef/cookbooks/aws
 	url = https://github.com/opscode-cookbooks/aws.git
+	branch = master
 [submodule "chef/cookbooks/partial_search"]
 	path = chef/cookbooks/partial_search
 	url = https://github.com/opscode-cookbooks/partial_search.git
+	branch = master
 [submodule "chef/cookbooks/python"]
 	path = chef/cookbooks/python
 	url = https://github.com/opscode-cookbooks/python.git
+	branch = master
 [submodule "chef/cookbooks/homebrew"]
 	path = chef/cookbooks/homebrew
 	url = https://github.com/opscode-cookbooks/homebrew.git
+	branch = master
