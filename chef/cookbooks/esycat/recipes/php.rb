@@ -8,7 +8,14 @@ include_recipe 'php::module_mysql'
 include_recipe 'php::module_sqlite3'
 
 package 'php5-cli'
+package 'php5-json'
+package 'php5-mysql'
+package 'php5-mongo'
 package 'php5-geoip'
+package 'php5-gd'
+package 'php5-imagick'
+package 'php5-oauth'
+package 'php5-xdebug'
 
 package 'php-pear'
 
