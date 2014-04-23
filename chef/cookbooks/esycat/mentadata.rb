@@ -18,8 +18,15 @@ depends "glassfish"
 depends "python"
 depends "php"
 
-# depends "mysql"
+depends "mysql"
 depends "rethinkdb"
+
+depends "authbind"
+depends "install_from"
+depends "chef_handler"
+depends "build-essential"
+depends "aws"
+depends "xml"
 
 %w{ debian ubuntu amazon mac_os_x }.each do |os|
     supports os
