@@ -95,6 +95,16 @@ task ('js-compress', type: GzipJsTask) {
     dest = getTargetFile(jsDestDir, 'js', 'min')
 }
 
+task ('js-compile', type: RequireJsTask) {
+    source jsSrcDir.resolve('main.js').toFile()
+    dest jsDestDir.resolve('main.min.js').toFile()
+    requirejs.buildprofile = jsSrcDir.resolve('require.config.js')
+
+    inputs.dir jsSrcDir.toFile()
+    inputs.file requirejs.buildprofile
+    outputs.file dest
+}
+
 task ('js-clean') {
     println '---'
     println getTargetFile(jsDestDir, 'js')
