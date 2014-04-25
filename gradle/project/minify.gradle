@@ -105,19 +105,11 @@ task ('js-compile', type: RequireJsTask) {
     outputs.file dest
 }
 
-task ('js-clean') {
-    println '---'
-    println getTargetFile(jsDestDir, 'js')
-    println '---'
-    doLast {
-        getTargetFile(jsDestDir, 'js').delete()
-        getTargetFile(jsDestDir, 'js', 'min').delete()
-    }
-}
-
-task ('css-clean') << {
-    getTargetFile(cssDestDir, 'css').delete()
-    getTargetFile(cssDestDir, 'css', 'min').delete()
+task ('js-clean', type: Delete) {
+    delete tasks['js-combine']
+    delete tasks['js-minify']
+    delete tasks['js-compress']
+    delete tasks['js-compile']
 }
 
 task ('css-combine', type: CombineCssTask) {
@@ -139,4 +131,11 @@ task ('css-compile', type: Exec) {
     workingDir sourceSetDir.toFile()
     executable 'scss'
     args getScssArgs()
+}
+
+task ('css-clean', type: Delete) {
+    delete tasks['css-combine']
+    delete tasks['css-minify']
+    delete tasks['css-compress']
+    delete tasks['css-compile']
 }
