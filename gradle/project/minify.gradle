@@ -81,18 +81,18 @@ def getTargetFile(Path path, String ext, String suffix = null) {
 }
 
 task ('js-combine', type: CombineJsTask) {
-    source = javascript.source[env].js.files
-    dest = getTargetFile(jsDestDir, 'js')
+    source javascript.source[env].js.files
+    dest getTargetFile(jsDestDir, 'js')
 }
 
 task ('js-minify', type: MinifyJsTask) {
-    source = tasks['js-combine']
-    dest = getTargetFile(jsDestDir, 'js', 'min')
+    source tasks['js-combine']
+    dest getTargetFile(jsDestDir, 'js', 'min')
 }
 
 task ('js-compress', type: GzipJsTask) {
-    source = tasks['js-minify']
-    dest = getTargetFile(jsDestDir, 'js', 'min')
+    source tasks['js-minify']
+    dest getTargetFile(jsDestDir, 'js', 'min')
 }
 
 task ('js-compile', type: RequireJsTask) {
@@ -113,18 +113,18 @@ task ('js-clean', type: Delete) {
 }
 
 task ('css-combine', type: CombineCssTask) {
-    source = css.source[env].css.files
-    dest = getTargetFile(cssDestDir, 'css')
+    source css.source[env].css.files
+    dest getTargetFile(cssDestDir, 'css')
 }
 
 task ('css-minify', type: MinifyCssTask) {
-    source = tasks['css-combine']
-    dest = getTargetFile(cssDestDir, 'css', 'min')
+    source tasks['css-combine']
+    dest getTargetFile(cssDestDir, 'css', 'min')
 }
 
 task ('css-compress', type: GzipCssTask) {
-    source = tasks['css-minify']
-    dest = getTargetFile(cssDestDir, 'css', 'min')
+    source tasks['css-minify']
+    dest getTargetFile(cssDestDir, 'css', 'min')
 }
 
 task ('css-compile', type: Exec) {
