@@ -17,15 +17,21 @@ buildscript {
     }
 }
 
-//apply plugin: 'js'
-//apply plugin: 'css'
 apply plugin: JsPlugin
 apply plugin: CssPlugin
+
+ext {
+    sourceSetDir = projectDir.toPath().resolve(config.system.mainSrcDir)
+    jsSrcDir     = sourceSetDir.resolve(config.system.js.srcDir)
+    jsDestDir    = sourceSetDir.resolve(config.system.js.destDir)
+    cssSrcDir    = sourceSetDir.resolve(config.system.css.srcDir)
+    cssDestDir   = sourceSetDir.resolve(config.system.css.destDir)
+}
 
 // Declare JavaScript sources
 javascript.source {
     def defaultSourceSet = {
-        srcDir Paths.get(projectDir.toString(), artifactDir, jsSrcDir).toFile()
+        srcDir jsSrcDir.toFile()
         include '**/*.js'
         exclude '**/*.min.js'
         exclude project.name + '.js'
@@ -37,7 +43,7 @@ javascript.source {
 // Declare StyleSheet sources
 css.source {
     def defaultSourceSet = {
-        srcDir Paths.get(projectDir.toString(), artifactDir, cssSrcDir).toFile()
+        srcDir cssSrcDir.toFile()
         include '*.css'
         exclude '*.min.css'
         exclude project.name + '.css'
@@ -63,60 +69,64 @@ def getScssArgs() {
         args.add('compressed')
     }
 
-    args.add Paths.get(scssSrcDir, project.name + ".scss")
-    args.add Paths.get(cssDestDir, project.name + ".css")
+    args.add cssSrcDir.resolve(project.name + '.scss')
+    args.add cssDestDir.resolve(project.name + '.css')
 
     args
 }
 
-def getTargetFile(String dir, String type, String suffix = null) {
-    def name = project.name + (suffix ? '.' + suffix : '') + '.' + type
-    def path = Paths.get(projectDir.toString(), artifactDir, dir, name)
-    path.toFile()
+def getTargetFile(Path path, String ext, String suffix = null) {
+    def name = project.name + (suffix ? '.' + suffix : '') + '.' + ext
+    path.resolve(name).toFile()
 }
 
-task ('clean-js') << {
-    getTargetFile(jsDestDir, 'js').delete()
-    getTargetFile(jsDestDir, 'js', 'min').delete()
-}
-
-task ('combine-js', type: CombineJsTask) {
+task ('js-combine', type: CombineJsTask) {
     source = javascript.source[env].js.files
     dest = getTargetFile(jsDestDir, 'js')
 }
 
-task ('minify-js', type: MinifyJsTask) {
-    source = tasks['combine-js']
+task ('js-minify', type: MinifyJsTask) {
+    source = tasks['js-combine']
     dest = getTargetFile(jsDestDir, 'js', 'min')
 }
 
-task ('compress-js', type: GzipJsTask) {
-    source = tasks['minify-js']
+task ('js-compress', type: GzipJsTask) {
+    source = tasks['js-minify']
     dest = getTargetFile(jsDestDir, 'js', 'min')
 }
 
-task ('clean-css') << {
+task ('js-clean') {
+    println '---'
+    println getTargetFile(jsDestDir, 'js')
+    println '---'
+    doLast {
+        getTargetFile(jsDestDir, 'js').delete()
+        getTargetFile(jsDestDir, 'js', 'min').delete()
+    }
+}
+
+task ('css-clean') << {
     getTargetFile(cssDestDir, 'css').delete()
     getTargetFile(cssDestDir, 'css', 'min').delete()
 }
 
-task ('combine-css', type: CombineCssTask) {
+task ('css-combine', type: CombineCssTask) {
     source = css.source[env].css.files
     dest = getTargetFile(cssDestDir, 'css')
 }
 
-task ('minify-css', type: MinifyCssTask) {
-    source = tasks['combine-css']
+task ('css-minify', type: MinifyCssTask) {
+    source = tasks['css-combine']
     dest = getTargetFile(cssDestDir, 'css', 'min')
 }
 
-task ('compress-css', type: GzipCssTask) {
-    source = tasks['minify-css']
+task ('css-compress', type: GzipCssTask) {
+    source = tasks['css-minify']
     dest = getTargetFile(cssDestDir, 'css', 'min')
 }
 
-task ('compile-css', type: Exec) {
-    workingDir Paths.get(projectDir.toString(), artifactDir).toFile()
+task ('css-compile', type: Exec) {
+    workingDir sourceSetDir.toFile()
     executable 'scss'
     args getScssArgs()
 }
