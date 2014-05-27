@@ -28,6 +28,7 @@ depends 'chef_handler'
 depends 'build-essential'
 depends 'aws'
 depends 'xml'
+depends 'hostsfile'
 
 %w{ debian ubuntu amazon mac_os_x }.each do |os|
     supports os
