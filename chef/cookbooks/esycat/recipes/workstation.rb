@@ -38,8 +38,17 @@ apt_repository 'finalterm' do
     uri          'http://ppa.launchpad.net/finalterm/daily/ubuntu'
     distribution node['lsb']['codename']
     components   ['main']
+    keyserver    'keyserver.ubuntu.com'
+    key          'FD316B5D'
 end
 
+apt_repository 'sublime' do
+    uri          'http://ppa.launchpad.net/webupd8team/sublime-text-3/ubuntu'
+    distribution node['lsb']['codename']
+    components   ['main']
+    keyserver    'keyserver.ubuntu.com'
+    key          'EEA14886'
+end
 
 package 'xclip'
 package 'gimp'
@@ -49,6 +58,8 @@ package 'vlc'
 package 'sublime-text'
 package 'gitg'
 package 'kdiff3'
-package 'finalterm'
+#package 'finalterm'
 package 'virtualbox'
+
+package 'compizconfig-settings-manager'
 

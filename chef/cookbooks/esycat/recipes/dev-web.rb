@@ -1,3 +1,5 @@
 package "gem"
 
-gem_package "scss"
+gem_package "sass"
+gem_package "scss-lint"
+
