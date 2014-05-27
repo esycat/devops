@@ -74,3 +74,15 @@
 	path = chef/cookbooks/homebrew
 	url = https://github.com/opscode-cookbooks/homebrew.git
 	branch = master
+[submodule "chef/cookbooks/iis"]
+	path = chef/cookbooks/iis
+	url = https://github.com/opscode-cookbooks/iis.git
+	branch = master
+[submodule "chef/cookbooks/yum-epel"]
+	path = chef/cookbooks/yum-epel
+	url = https://github.com/opscode-cookbooks/yum-epel.git
+	branch = master
+[submodule "chef/cookbooks/yum"]
+	path = chef/cookbooks/yum
+	url = https://github.com/opscode-cookbooks/yum.git
+	branch = master
