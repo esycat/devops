@@ -3,10 +3,10 @@ include_recipe 'esycat::dev-utils'
 include_recipe 'esycat::dev-java'
 include_recipe 'esycat::dev-web'
 include_recipe 'esycat::python'
-include_recipe 'esycat::protobuf'
 #include_recipe 'esycat::sys-gnome'
 include_recipe 'esycat::sys-ubuntu'
 include_recipe 'esycat::apps-web'
+#include_recipe 'esycat::protobuf'
 
 apt_repository 'dropbox' do
     uri          'http://linux.dropbox.com/ubuntu'
@@ -44,9 +44,11 @@ end
 package 'xclip'
 package 'gimp'
 package 'nitrogen'
+package 'vlc'
 
-package 'finalterm'
 package 'sublime-text'
 package 'gitg'
 package 'kdiff3'
+package 'finalterm'
+package 'virtualbox'
 
