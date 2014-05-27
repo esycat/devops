@@ -86,3 +86,7 @@
 	path = chef/cookbooks/yum
 	url = https://github.com/opscode-cookbooks/yum.git
 	branch = master
+[submodule "chef/cookbooks/hostsfile"]
+	path = chef/cookbooks/hostsfile
+	url = https://github.com/customink-webops/hostsfile
+	branch = master
