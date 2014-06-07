@@ -49,6 +49,7 @@ apt_repository 'sublime' do
     keyserver    'keyserver.ubuntu.com'
     key          'EEA14886'
 end
+include_recipe 'esycat::settings'
 
 package 'xclip'
 package 'gimp'

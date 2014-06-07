@@ -90,3 +90,7 @@
 	path = chef/cookbooks/hostsfile
 	url = https://github.com/customink-webops/hostsfile
 	branch = master
+[submodule "chef/cookbooks/gsettings"]
+	path = chef/cookbooks/gsettings
+	url = https://github.com/MarkRoddy/chef-gsettings.git
+	branch = master
