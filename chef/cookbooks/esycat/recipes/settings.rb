@@ -9,7 +9,7 @@ end
 gsettings 'org.gnome.nautilus.preferences' do
     option 'sort-directories-first'
     user 'esycat'
-    value 'true'
+    value true
 end
 
 
@@ -36,13 +36,13 @@ end
 gsettings 'org.gnome.libgnomekbd.desktop' do
     option 'group-per-window'
     user 'esycat'
-    value 'true'
+    value true
 end
 
 gsettings 'org.gnome.libgnomekbd.indicator' do
     option 'show-flags'
     user 'esycat'
-    value 'true'
+    value true
 end
 
 gsettings 'org.gnome.settings-daemon.peripherals.keyboard' do
@@ -91,13 +91,13 @@ end
 gsettings 'org.gnome.desktop.interface' do
     option 'clock-show-date'
     user 'esycat'
-    value 'true'
+    value true
 end
 
 gsettings 'org.gnome.desktop.interface' do
     option 'show-input-method-menu'
     user 'esycat'
-    value 'true'
+    value true
 end
 
 gsettings 'com.canonical.indicator.datetime' do
@@ -196,10 +196,3 @@ gsettings 'com.canonical.Unity.Lenses' do
         "more_suggestions-skimlinks.scope"
     ]'
 end
-
-
-
-
-
-
-
