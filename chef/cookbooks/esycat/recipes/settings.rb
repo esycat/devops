@@ -100,6 +100,69 @@ gsettings 'org.gnome.desktop.interface' do
     value 'true'
 end
 
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-calendar'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-clock'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-date'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-day'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-events'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-locations'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-auto-detected-location'
+    user 'esycat'
+    value false
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'show-week-numbers'
+    user 'esycat'
+    value true
+end
+
+gsettings 'com.canonical.indicator.datetime' do
+    option 'locations'
+    user 'esycat'
+    value '[
+        "America/Los_Angeles San Francisco",
+        "America/Chicago Chicago",
+        "America/New_York New York",
+        "UTC UTC",
+        "Europe/Berlin Berlin",
+        "Europe/Moscow Moscow",
+        "Australia/Perth Perth"
+    ]'
+end
+
+
 gsettings 'com.canonical.Unity.Launcher' do
     option 'favorites'
     user 'esycat'
