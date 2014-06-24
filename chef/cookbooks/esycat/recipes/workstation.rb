@@ -22,9 +22,6 @@ package 'gitg'
 package 'kdiff3'
 #package 'finalterm'
 package 'virtualbox'
+package 'shutter'
 
 package 'compizconfig-settings-manager'
-
-
-
-

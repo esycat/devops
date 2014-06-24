@@ -5,7 +5,7 @@ apt_repository 'webupd8team-java' do
 end
 
 #package 'openjdk-7-jre'
-#package 'default-jre'
+#package 'openjdk-8-jre'
 
 package 'oracle-java7-installer'
 package 'oracle-java8-installer'
