@@ -6,7 +6,6 @@ include_recipe 'esycat::python'
 #include_recipe 'esycat::sys-gnome'
 include_recipe 'esycat::sys-ubuntu'
 include_recipe 'esycat::apps-web'
-#include_recipe 'esycat::protobuf'
 
 include_recipe 'esycat::repos'
 include_recipe 'esycat::settings'
