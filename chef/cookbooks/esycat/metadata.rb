@@ -5,29 +5,32 @@ version          '0.4'
 description      ''
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-depends 'cutlery'
+# Chef-related stuff (transitive dependencies)
+# depends 'install_from'
+# depends 'chef_handler'
+# depends 'ark'
+# depends 'cutlery'
+
 depends 'apt'
 depends 'homebrew'
 
+depends 'build-essential'
+depends 'authbind'
 depends 'openssl'
 depends 'postfix'
 
 depends 'java'
 depends 'gradle'
 depends 'glassfish'
-
+depends 'nodejs'
 depends 'python'
 depends 'php'
 
 depends 'mysql'
 depends 'rethinkdb'
 
-depends 'authbind'
-depends 'install_from'
-depends 'chef_handler'
-depends 'build-essential'
-depends 'aws'
 depends 'xml'
+depends 'aws'
 
 depends 'hostsfile'
 depends 'gsettings'

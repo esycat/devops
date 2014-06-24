@@ -94,3 +94,12 @@
 	path = chef/cookbooks/gsettings
 	url = https://github.com/MarkRoddy/chef-gsettings.git
 	branch = master
+[submodule "chef/cookbooks/nodejs"]
+	path = chef/cookbooks/nodejs
+	url = https://github.com/redguide/nodejs.git
+[submodule "chef/cookbooks/ark"]
+	path = chef/cookbooks/ark
+	url = https://github.com/opscode-cookbooks/ark
+[submodule "chef/cookbooks/7-zip"]
+	path = chef/cookbooks/7-zip
+	url = http://github.com/opscode-cookbooks/7-zip
