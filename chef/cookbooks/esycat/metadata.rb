@@ -29,6 +29,8 @@ depends 'php'
 depends 'mysql'
 depends 'rethinkdb'
 
+# depends 'docker'
+
 depends 'xml'
 depends 'aws'
 
