@@ -106,3 +106,18 @@
 	path = chef/cookbooks/7-zip
 	url = http://github.com/opscode-cookbooks/7-zip
 	branch = master
+[submodule "aufs"]
+	path = chef/cookbooks/aufs
+	url = https://github.com/bflad/chef-aufs.git
+[submodule "docker"]
+	path = chef/cookbooks/docker
+	url = https://github.com/bflad/chef-docker.git
+[submodule "device-mapper"]
+	path = chef/cookbooks/device-mapper
+	url = https://github.com/bflad/chef-device-mapper.git
+[submodule "chef-kernel-modules"]
+	path = chef/cookbooks/modules
+	url = https://github.com/Youscribe/modules-cookbook.git
+[submodule "chef-git"]
+	path = chef/cookbooks/git
+	url = https://github.com/jssjr/git.git
