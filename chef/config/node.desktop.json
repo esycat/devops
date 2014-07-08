@@ -1,3 +1,5 @@
 {
-    "run_list": [ "role[desktop]" ]
+    "run_list": [
+        "role[workstation]"
+    ]
 }

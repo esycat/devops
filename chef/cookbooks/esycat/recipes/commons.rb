@@ -1,14 +1,17 @@
-include_recipe 'esycat::sys-utils'
-include_recipe 'esycat::fs-utils'
-
 package 'coreutils'
+
 package 'bash-completion'
 package 'zsh'
+
 package 'curl'
+package 'httpie'
 package 'wget'
+
 package 'vim'
 package 'vim-scripts'
+
 package 'mc'
+
 package 'p7zip-full'
 package 'realpath'
 package 'whois'

@@ -1,4 +1,4 @@
-name 'base-serv'
+name 'server'
 description 'Base Server'
 
 run_list [
@@ -6,8 +6,13 @@ run_list [
     'recipe[build-essential]',
     'recipe[apt]',
 
+    'recipe[esycat::repos]',
+
+    'recipe[esycat::sys-utils]',
+    'recipe[esycat::fs-utils]',
+    'recipe[esycat::net-utils]',
     'recipe[esycat::commons]',
-    'recipe[esycat::base-serv]',
+
     'recipe[esycat::mail-serv]'
 ]
 

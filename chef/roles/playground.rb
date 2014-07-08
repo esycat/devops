@@ -1,10 +1,11 @@
-name 'dev-serv'
+name 'playground'
 description 'Development Server'
 
 run_list  [
-    'role[base-serv]',
+    'role[server]',
+
     'role[app-serv]',
     'role[db-serv]',
-    'recipe[esycat::dev-serv]',
+
     'recipe[esycat::users]'
 ]

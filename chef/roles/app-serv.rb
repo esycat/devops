@@ -2,7 +2,7 @@ name 'app-serv'
 description 'Application Server'
 
 run_list [
-    'role[base-serv]',
+    'role[server]',
 
     'recipe[java]',
     'recipe[php]',
