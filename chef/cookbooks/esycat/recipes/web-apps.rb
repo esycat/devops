@@ -38,8 +38,8 @@ package 'gajim'
 package 'transmission-gtk'
 package 'transmission-cli'
 
-package 'btsync'
+# package 'btsync'      # single-user, for server deployment
+package 'btsync-user' # multi-user, for desktop usage
 package 'btsync-gui-gtk'
-package 'btsync-user'
 
 package 'dropbox'
