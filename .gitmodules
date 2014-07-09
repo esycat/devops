@@ -109,16 +109,23 @@
 [submodule "chef/aufs"]
 	path = chef/cookbooks/aufs
 	url = https://github.com/bflad/chef-aufs.git
+	branch = master
 [submodule "chef/docker"]
 	path = chef/cookbooks/docker
 	url = https://github.com/bflad/chef-docker.git
 [submodule "chef/device-mapper"]
 	path = chef/cookbooks/device-mapper
 	url = https://github.com/bflad/chef-device-mapper.git
+	branch = master
 [submodule "chef/kernel-modules"]
 	path = chef/cookbooks/modules
 	url = https://github.com/Youscribe/modules-cookbook.git
+	branch = master
 [submodule "chef/git"]
 	path = chef/cookbooks/git
 	url = https://github.com/jssjr/git.git
-
+	branch = master
+[submodule "chef/database"]
+	path = chef/cookbooks/database
+	url = https://github.com/opscode-cookbooks/database
+	branch = master
