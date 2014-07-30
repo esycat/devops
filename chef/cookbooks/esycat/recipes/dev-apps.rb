@@ -23,5 +23,7 @@ end
 package 'sublime-text'
 package 'gitg'
 package 'kdiff3'
-package 'virtualbox'
 #package 'finalterm'
+
+package 'vagrant'
+package 'virtualbox'

@@ -1,8 +1,14 @@
+package 'ssh'
+package 'curl'
+package 'httpie'
+package 'wget'
+
 package 'autofs'
-package 'nfs-client'
-package 'nfs-kernel-server'
 package 'sshfs'
 package 'fusesmb'
+package 'nfs-client'
+package 'nfs-kernel-server'
+
 package 'snmp'
 package 'snmpd'
 package 'ethtool'
