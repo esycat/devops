@@ -23,11 +23,12 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown Preview",
-		"Vintage",
-		"SyncedSideBar",
 		"TrailingSpaces",
-		"Alignment"
+		"SyncedSideBar",
+		"Markdown Preview",
+		"Alignment",
+		"Vintage",
+		"Markdown"
 	],
 	"indent_subsequent_lines": true,
 	"line_numbers": true,
