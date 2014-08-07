@@ -1,0 +1,51 @@
+OS=$(uname)
+
+# Path variable
+PATH=/Developer/usr/bin:$PATH
+PATH=/opt/local/bin:/opt/local/sbin:$PATH
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$HOME/bin:$PATH
+PATH=$PATH:$HOME/Applications/appserver/bin
+export PATH
+
+# Man variable
+MANPATH=/opt/local/share/man:$MANPATH
+export MANPATH
+
+# Java classpath
+CLASSPATH=$HOME/Library/Java/:$CLASSPATH
+export CLASSPATH
+
+# Locale
+export LANGUAGE=en_US:en_AU:en_GB:en
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_MESSAGES=POSIX
+export LC_NUMERIC=POSIX
+
+# Shell history
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="&:[bf]g:exit"
+export HISTFILE=~/.history
+export HISTSIZE=1000
+export SAVEHIST=$HISTSIZE
+
+# Terminal colors
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# Editor
+export EDITOR="vim"
+
+# Grep colors
+export GREP_OPTIONS="--color=auto"
+# export GREP_COLORS='1;32'
+
+# SSH
+if [ "${OS}" = "Darwin" ] && [ -z "$SSH_AUTH_SOCK" ] ; then
+    export SSH_AUTH_SOCK=$(ls -t /tmp/launch-*/Listeners | head -1)
+fi
+
+# Development stuff
+export M2_HOME="$HOME/Applications/maven"
+export M2="$M2_HOME/bin"
