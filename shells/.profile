@@ -5,6 +5,7 @@ if [ -f "$SHELLRC" ]; then
 fi
 
 # Common environment variables
-if [ -f $HOME/.myenv ] ; then
-    . $HOME/.myenv
+if [ -f $HOME/.envrc ] ; then
+    . $HOME/.envrc
 fi
+

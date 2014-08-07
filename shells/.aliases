@@ -1,8 +1,8 @@
 OS=$(uname)
 
-ll="-ahl --color=auto --group-directories-first"
+ll="-alh --classify --color=auto --group-directories-first"
 
-alias psx="ps -ef | grep $1"
+alias psx="ps -ef | grep -i $1"
 alias ports="netstat -altu -np"
 alias top="htop"
 
@@ -10,9 +10,12 @@ case $OS in
     Linux)
         alias ll="ls $ll"
         alias clip="xclip -sel clip"
+        alias gitx="gitg"
         ;;
     Darwin)
         alias ll="gls $ll"
         alias clip="pbcopy"
+        alias gitg="gitx"
         ;;
 esac
+

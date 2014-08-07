@@ -1,6 +1,7 @@
 autoload -Uz compinit; compinit
 autoload -U promptinit; promptinit
-autoload colors; colors
+autoload -Uz vcs_info; vcs_info
+autoload -U colors; colors
 
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
@@ -10,15 +11,12 @@ setopt NO_HIST_BEEP
 setopt PROMPT_SUBST
 
 # Common environment variables
-if [ -f ~/.myenv ] ; then
-    . ~/.myenv
-fi
+test -r ~/.envrc && . ~/.envrc
 
-# Alias definitions.
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
-fi
+# Alias definitions
+test -r ~/.aliases && . ~/.aliases
 
+# Prompt
 PROMPT_USER="%{%B%(!.$fg[red].$fg[yellow])%}%n%{$reset_color%}"
 PROMPT_HOST="%{%B$fg[blue]%}%m%{$reset_color%}"
 PROMPT_PATH="%{$fg[magenta]%}%4~%{$reset_color%}"
@@ -32,3 +30,4 @@ bindkey -e
 # Backspace and Delete keys behavior
 bindkey "^?" backward-delete-char
 bindkey "^[[3~" delete-char
+
