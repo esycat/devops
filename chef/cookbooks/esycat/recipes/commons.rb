@@ -18,9 +18,11 @@ package 'xpdf'
 package 'pwgen'
 package 'screen'
 package 'ntp'
+package 'gawk'
 
 if %w{debian}.include?(node.platform_family)
     package 'aptitude'
+    package 'gdebi-core'
     package 'software-properties-common'
     package 'python-software-properties'
 end
