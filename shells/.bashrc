@@ -8,16 +8,19 @@ if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
-# Macports' bash completion scripts
+# MacPorts' bash completion scripts
 if [ -f /opt/local/etc/bash_completion ]; then
 	. /opt/local/etc/bash_completion
 fi
 
-# My custom completion definitions
+# Home Brew's bash completion scripts
+if [ -d /usr/local/etc/bash_completion.d ]; then
+    . /usr/local/etc/bash_completion.d/*
+fi
+
+# Custom completion definitions
 if [ -d ~/.bash_completion.d ]; then
-	for rule in ~/.bash_completion.d/* ; do
-		. "${rule}"
-	done
+    . ~/.bash_completion.d/*
 fi
 
 # Alias definitions
