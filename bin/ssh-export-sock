@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export SSH_AUTH_SOCK=$(ls /tmp/launch-*/Listeners)
+
