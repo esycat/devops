@@ -21,11 +21,12 @@ apply plugin: JsPlugin
 apply plugin: CssPlugin
 
 ext {
-    sourceSetDir = projectDir.toPath().resolve(config.system.mainSrcDir)
-    jsSrcDir     = sourceSetDir.resolve(config.system.js.srcDir)
-    jsDestDir    = sourceSetDir.resolve(config.system.js.destDir)
-    cssSrcDir    = sourceSetDir.resolve(config.system.css.srcDir)
-    cssDestDir   = sourceSetDir.resolve(config.system.css.destDir)
+    sourceSetDir    = projectDir.toPath().resolve(config.system.mainSrcDir)
+    jsSrcDir        = sourceSetDir.resolve(config.system.js.srcDir)
+    jsDestDir       = sourceSetDir.resolve(config.system.js.destDir)
+    cssSrcDir       = sourceSetDir.resolve(config.system.css.srcDir)
+    cssDestDir      = sourceSetDir.resolve(config.system.css.destDir)
+    requireJsConfig = jsSrcDir.resolve('require.config.js')
 }
 
 // Declare JavaScript sources
@@ -37,6 +38,7 @@ javascript.source {
         exclude project.name + '.js'
     }
     dev.js  defaultSourceSet
+    test.js defaultSourceSet
     prod.js defaultSourceSet
 }
 
@@ -49,6 +51,7 @@ css.source {
         exclude project.name + '.css'
     }
     dev.css  defaultSourceSet
+    test.css defaultSourceSet
     prod.css defaultSourceSet
 }
 
@@ -98,7 +101,7 @@ task ('js-compress', type: GzipJsTask) {
 task ('js-compile', type: RequireJsTask) {
     source jsSrcDir.resolve('main.js').toFile()
     dest jsDestDir.resolve('main.min.js').toFile()
-    requirejs.buildprofile = jsSrcDir.resolve('require.config.js')
+    requirejs.buildprofile = requireJsConfig.toFile()
 
     inputs.dir jsSrcDir.toFile()
     inputs.file requirejs.buildprofile
