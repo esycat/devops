@@ -38,3 +38,11 @@
 	tool = araxis # kdiff3 for Linux
 [sendemail]
 	smtpserver = smtp.gmail.com
+
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 981x722+358+223
+	history-view-vpane-position = 527
+	main-window-view = FileView
+	file-view-vpane-position = 347
+
