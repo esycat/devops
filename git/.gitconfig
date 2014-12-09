@@ -23,10 +23,10 @@
 	dt = difftool
 	la = log --graph --decorate --oneline
 	rv = log -p -w --no-merges -5
-    ec = config --edit --global
-    undo = reset --mixed HEAD~1
-    amend = commit --all --amend
-    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	ec = config --edit --global
+	undo = reset --mixed HEAD~1
+	amend = commit --all --amend
+	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 [log]
 	date = local
 	abbrevCommit = true
