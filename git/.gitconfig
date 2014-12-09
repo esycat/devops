@@ -33,9 +33,20 @@
 [push]
 	default = upstream
 [diff]
-	tool = araxis # kdiff3 for Linux
+	tool = icdiff
 [merge]
-	tool = araxis # kdiff3 for Linux
+	tool = ksdiff
+[difftool]
+	prompt = off
+[difftool "icdiff"]
+	cmd = icdiff \"$LOCAL\" \"$REMOTE\"
+[difftool "ksdiff"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "ksdiff"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool "araxis"]
+	path = /Applications/Araxis Merge.app/Contents/Utilities/compare
 [sendemail]
 	smtpserver = smtp.gmail.com
 
