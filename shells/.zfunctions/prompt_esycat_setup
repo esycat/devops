@@ -1,0 +1,65 @@
+# Load dependencies.
+pmodload 'helper'
+
+function prompt_esycat_pwd {
+    setopt LOCAL_OPTIONS
+
+}
+
+function prompt_esycat_precmd {
+    setopt LOCAL_OPTIONS
+
+    # Get Git repository information.
+    if (( $+functions[git-info] )); then
+        git-info
+    fi
+}
+
+function prompt_esycat_setup {
+    setopt LOCAL_OPTIONS
+
+    # Load required functions
+    autoload colors; colors
+    autoload -Uz add-zsh-hook
+
+    # Add hook for calling git-info before each command
+    add-zsh-hook precmd prompt_esycat_precmd
+
+    # Set git-info parameters
+    zstyle ':prezto:module:git:info' verbose 'yes'
+    zstyle ':prezto:module:git:info:action'    format '%{%F{yellow}%}%s%{$reset_color%}'
+    zstyle ':prezto:module:git:info:added'     format ' %{%F{green}%}✚%{$reset_color%}'
+    zstyle ':prezto:module:git:info:ahead'     format ' %{%F{yellow}%}⇡%{$reset_color%}'
+    zstyle ':prezto:module:git:info:behind'    format ' %{%F{yellow}%}⇣%{$reset_color%}'
+    zstyle ':prezto:module:git:info:branch'    format '%{%F{green}%}%b%{$reset_color%}'
+    zstyle ':prezto:module:git:info:commit'    format ':%{%F{green}%}%.7c%{$reset_color%}'
+    zstyle ':prezto:module:git:info:deleted'   format ' %{%F{red}%}✖%{$reset_color%}'
+    zstyle ':prezto:module:git:info:modified'  format ' %{%F{blue}%}✱%{$reset_color%}'
+    zstyle ':prezto:module:git:info:position'  format ':%{%F{red}%}%p%{$reset_color%}'
+    zstyle ':prezto:module:git:info:renamed'   format ' %{%F{magenta}%}⇢%{$reset_color%}'
+    zstyle ':prezto:module:git:info:stashed'   format ' %{%F{cyan}%}✭%{$reset_color%}'
+    zstyle ':prezto:module:git:info:unmerged'  format ' %{%F{yellow}%}═%{$reset_color%}'
+    zstyle ':prezto:module:git:info:untracked' format ' %{%F{white}%}◼%{$reset_color%}'
+    zstyle ':prezto:module:git:info:keys'      format \
+        'state' '$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
+
+    # Define prompt components
+    PROMPT_USER="%{%B%(!.$fg[red].$fg[yellow])%}%n%{$reset_color%}" # username turns red if the current user is root
+    PROMPT_HOST="%{%B$fg[blue]%}%m%{$reset_color%}"
+    PROMPT_PATH="%{$fg[magenta]%}%4~%{$reset_color%}"
+    PROMPT_SIGN="%{%B%(?.$fg[green].$fg[red])%}❯%{$reset_color%}" # prompt turns red if the last command didn't exit successfully
+    PROMPT='${PROMPT_USER}@${PROMPT_HOST} ${PROMPT_PATH} ${PROMPT_SIGN} '
+
+    RPROMPT='(${git_info:+${(e)git_info[state]}})'
+
+    SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
+    # Use a basic prompt inside Midnight Commander
+    if (( $+MC_SID )); then
+        PROMPT='${PROMPT_SIGN} '
+        RPROMPT=''
+        SPROMPT=''
+    fi
+}
+
+prompt_esycat_setup "$@"
