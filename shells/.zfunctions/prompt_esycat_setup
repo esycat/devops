@@ -50,7 +50,7 @@ function prompt_esycat_setup {
     PROMPT_SIGN="%{%B%(?.$fg[green].$fg[red])%}❯%{$reset_color%}" # prompt turns red if the last command didn't exit successfully
     PROMPT='${PROMPT_USER}@${PROMPT_HOST} ${PROMPT_PATH} ${PROMPT_SIGN} '
 
-    RPROMPT='(${git_info:+${(e)git_info[state]}})'
+    RPROMPT='${git_info:+(${(e)git_info[state]})}'
 
     SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
