@@ -46,9 +46,10 @@ function prompt_esycat_setup {
     # Define prompt components
     PROMPT_USER="%{%B%(!.$fg[red].$fg[yellow])%}%n%{$reset_color%}" # username turns red if the current user is root
     PROMPT_HOST="%{%B$fg[blue]%}%m%{$reset_color%}"
+    PROMPT_WHOAMI="${PROMPT_USER}${SSH_TTY:+@${PROMPT_HOST}}"
     PROMPT_PATH="%{$fg[magenta]%}%4~%{$reset_color%}"
     PROMPT_SIGN="%{%B%(?.$fg[green].$fg[red])%}❯%{$reset_color%}" # prompt turns red if the last command didn't exit successfully
-    PROMPT='${PROMPT_USER}@${PROMPT_HOST} ${PROMPT_PATH} ${PROMPT_SIGN} '
+    PROMPT='${PROMPT_WHOAMI} ${PROMPT_PATH} ${PROMPT_SIGN} '
 
     RPROMPT='${git_info:+(${(e)git_info[state]})}'
 
@@ -56,7 +57,7 @@ function prompt_esycat_setup {
 
     # Use a basic prompt inside Midnight Commander
     if (( $+MC_SID )); then
-        PROMPT='${PROMPT_SIGN} '
+        PROMPT='${PROMPT_WHOAMI} ${PROMPT_SIGN} '
         RPROMPT=''
         SPROMPT=''
     fi
