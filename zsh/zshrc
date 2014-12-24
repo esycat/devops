@@ -1,0 +1,31 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FCNTL_LOCK
+setopt NO_HIST_BEEP
+setopt PROMPT_SUBST
+
+HISTFILE="$HOME/.history"
+HISTSIZE=SAVEHIST=1024
+
+# Load aliases
+unalias gls # Prezto's Git module shadows GNU ls utility
+test -r ~/.aliases && . ~/.aliases
