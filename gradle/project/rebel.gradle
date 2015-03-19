@@ -1,0 +1,7 @@
+apply plugin: 'rebel'
+
+rebel {
+    // rebelXmlDirectory = 'src/main/resources'
+}
+
+tasks.jar.dependsOn generateRebel
