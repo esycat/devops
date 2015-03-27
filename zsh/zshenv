@@ -11,4 +11,4 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 # Common environment variables
-# test -r ~/.envrc && . ~/.envrc
+test -r ~/.envrc && . ~/.envrc

@@ -4,7 +4,7 @@
 # @license Apache License, Version 2.0
 # @scm https://gist.github.com/esycat/6617550
 
-source $HOME/.myenv
+source $HOME/.envrc
 
 realpath="realpath" # install `grealpath` for OS X
 repos_dir=$(dirname $($realpath $0))
