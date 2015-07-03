@@ -22,11 +22,11 @@
 	mt = mergetool
 	dt = difftool
 	la = log --graph --decorate --oneline
-	rv = log -p -w --no-merges -5
 	ec = config --edit --global
 	undo = reset --mixed HEAD~1
 	amend = commit --all --amend
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	last = for-each-ref --sort='-authordate:iso' --format=' %(color:green)%(authordate:iso)%09%(color:white)%(refname:short)' refs/remotes
 [log]
 	date = local
 	abbrevCommit = true
