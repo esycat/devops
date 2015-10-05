@@ -23,6 +23,3 @@ target/
 # OS and various viewers garbage
 Thumbs.db
 .DS_Store
-
-# Auto-generated symlink
-/content
