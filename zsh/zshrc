@@ -28,4 +28,5 @@ HISTSIZE=SAVEHIST=1024
 
 # Load aliases
 unalias gls # Prezto's Git module shadows GNU ls utility
+unalias gm  # Prezto's Git module shadows GraphicMagick utility
 test -r ~/.aliases && . ~/.aliases
