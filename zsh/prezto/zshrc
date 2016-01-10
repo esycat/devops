@@ -30,3 +30,8 @@ HISTSIZE=SAVEHIST=1024
 unalias gls # Prezto's Git module shadows GNU ls utility
 unalias gm  # Prezto's Git module shadows GraphicMagick utility
 test -r ~/.aliases && . ~/.aliases
+
+DOCKER_DEFAULT_MACHINE="devbox"
+if [ -n "$(docker-machine ls -q --filter name=$DOCKER_DEFAULT_MACHINE --filter state=running)" ] ; then
+    eval $(docker-machine env $DOCKER_DEFAULT_MACHINE)
+fi
