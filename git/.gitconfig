@@ -5,7 +5,7 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 	eol = lf
-    pager = diff-highlight | less -r
+	pager = diff-highlight | less -r
 [github]
 	user = esycat
 #	token =
@@ -35,6 +35,7 @@
 	default = upstream
 [diff]
 	tool = icdiff
+	compactionHeuristic = true
 [merge]
 	tool = ksdiff
 [difftool]
@@ -57,4 +58,10 @@
 	history-view-vpane-position = 527
 	main-window-view = FileView
 	file-view-vpane-position = 347
+[gpg]
+	program = gpg2
+[submodule]
+	fetchJobs = 4
+[interactive]
+	diffFilter = diff-highlight
 
