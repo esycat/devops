@@ -33,6 +33,7 @@ libssh2
 libtiff
 libtool
 lynx
+micro
 midnight-commander
 multitail
 neon
@@ -54,10 +55,12 @@ rust
 sassc
 sbt
 scala
+scalafmt
 spring-loaded
 sqlite
 ssh-copy-id
 syncthing
+the_silver_searcher
 tmux
 typesafe-activator
 unar
