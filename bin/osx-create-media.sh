@@ -7,8 +7,8 @@
 #
 
 DEVICE="/dev/disk3"
-OSX_NAME="El Capitan"
-APP_NAME="Install OS X ${OSX_NAME}"
+OSX_NAME="Sierra"
+APP_NAME="Install macOS ${OSX_NAME}"
 APP_PATH="/Applications"
 APP_FILE="${APP_PATH}/${APP_NAME}.app"
 
