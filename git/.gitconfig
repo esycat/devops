@@ -8,7 +8,6 @@
 	pager = diff-highlight | less -r
 [github]
 	user = esycat
-#	token =
 [color]
 	diff = auto
 	status = auto
@@ -25,7 +24,7 @@
 	la = log --graph --decorate --oneline
 	ec = config --edit --global
 	undo = reset --mixed HEAD~1
-	amend = commit --all --amend
+	amend = commit --amend --no-edit
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	last = for-each-ref --sort='-authordate:iso' --format=' %(color:green)%(authordate:iso)%09%(color:white)%(refname:short)' refs/remotes
 [log]
