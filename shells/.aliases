@@ -3,6 +3,7 @@ ll="-alh --classify --color=auto --group-directories-first"
 alias psx="ps -ef | grep -i $1"
 alias ports="netstat -altu -np"
 alias top="htop"
+alias m="micro"
 
 case $OS in
     Linux)
