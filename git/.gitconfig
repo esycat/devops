@@ -23,8 +23,10 @@
 	dt = difftool
 	la = log --graph --decorate --oneline
 	ec = config --edit --global
+    fp = push --force-with-lease
 	undo = reset --mixed HEAD~1
 	amend = commit --amend --no-edit
+    patch = --no-pager diff --no-color
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	last = for-each-ref --sort='-authordate:iso' --format=' %(color:green)%(authordate:iso)%09%(color:white)%(refname:short)' refs/remotes
 [log]
