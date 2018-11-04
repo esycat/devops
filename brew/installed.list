@@ -63,7 +63,6 @@ rust
 sassc
 sbt
 scala
-scalafmt
 shared-mime-info
 spring-loaded
 sqlite
@@ -79,5 +78,5 @@ xz
 zsh
 zsh-completions
 zsh-syntax-highlighting
-homebrew/completions/pip-completion
-olafurpg/scalafmt/scalafmt
+pip-completion
+

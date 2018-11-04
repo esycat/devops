@@ -34,6 +34,9 @@ test -r ~/.aliases && . ~/.aliases
 # Load Fuzzy Finder
 test -r ~/.fzf.zsh && . ~/.fzf.zsh
 
+# Load AWS completions
+source /usr/local/share/zsh/site-functions/_aws
+
 DOCKER_DEFAULT_MACHINE="devbox"
 if [ -n "$(docker-machine ls -q --filter name=$DOCKER_DEFAULT_MACHINE --filter state=running)" ] ; then
     eval $(docker-machine env $DOCKER_DEFAULT_MACHINE)
