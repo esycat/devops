@@ -5,7 +5,7 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 	eol = lf
-	pager = diff-highlight | less -r
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [github]
 	user = esycat
 [color]
@@ -62,5 +62,5 @@
 [submodule]
 	fetchJobs = 4
 [interactive]
-	diffFilter = diff-highlight
+	diffFilter = diff-so-fancy
 
