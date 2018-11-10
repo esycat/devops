@@ -22,7 +22,6 @@
 	mt = mergetool
 	dt = difftool
 	la = log --graph --decorate --oneline
-	ec = config --edit --global
 	fp = push --force-with-lease
 	undo = reset --mixed HEAD~1
 	amend = commit --amend --no-edit
