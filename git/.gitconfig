@@ -37,13 +37,16 @@
 	tool = icdiff
 	compactionHeuristic = true
 [merge]
-	tool = ksdiff
+	tool = smerge
 [difftool]
 	prompt = off
 [difftool "icdiff"]
 	cmd = icdiff \"$LOCAL\" \"$REMOTE\"
 [difftool "ksdiff"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "smerge"]
+	cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
 [mergetool "ksdiff"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
