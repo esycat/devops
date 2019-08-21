@@ -4,6 +4,7 @@ alias psx="ps -ef | grep -i $1"
 alias ports="netstat -altu -np"
 alias top="htop"
 alias m="micro"
+alias pie="http"
 
 case $OS in
     Linux)
