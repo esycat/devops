@@ -10,12 +10,12 @@ realpath="realpath" # install `grealpath` for OS X
 repos_dir=$(dirname $($realpath $0))
 postuphook="hooks/post-update"
 
-LOG_FILE="${repos_dir}/up.log"
-LOG_AGENT="BackupAgent"
+LOG_FILE="/var/log/diehard/run.log"
+LOG_AGENT="Diehard"
 
-GIT_USER="git"
+GIT_USER="esycat"
 GIT_OPTS="-p"
-GIT_REMOTE="bb"
+GIT_REMOTE="origin"
 
 if [[ -n "$GIT_USER"  && $(id -nu) != "$GIT_USER" ]] ; then
     echo "This script must be executed as ${GIT_USER} user."
