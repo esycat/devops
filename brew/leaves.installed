@@ -18,7 +18,9 @@ jq
 micro
 midnight-commander
 multitail
+mysql-client
 netcat
+node
 p7zip
 pip-completion
 pwgen
