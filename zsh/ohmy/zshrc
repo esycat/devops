@@ -4,7 +4,7 @@ ZSH_THEME="esycat"
 ENABLE_CORRECTION="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(copydir docker git gnu-utils gradle history httpie osx scala sudo)
+plugins=(sudo gnu-utils history tmux ripgrep httpie copydir osx git gradle docker kubectl scala)
 
 source $ZSH/oh-my-zsh.sh
 
