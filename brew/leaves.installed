@@ -4,6 +4,7 @@ brew-pip
 coreutils
 diff-so-fancy
 dos2unix
+weaveworks/tap/eksctl
 exiftool
 fzf
 git
@@ -21,6 +22,7 @@ multitail
 mysql-client
 netcat
 node
+node@10
 p7zip
 pip-completion
 pwgen
