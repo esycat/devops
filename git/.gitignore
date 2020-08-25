@@ -1,25 +1,47 @@
 # Caches
 .cache/
-.gradle/
 .sass-cache/
 
+# Gradle
+.gradle/
+.gradletasknamecache
+.nb-gradle
+
 # Build output
-build/
-out/
-target/
+/build/
+/out/
+/target/
+/bin/
+/classes/
 
 # Eclipse, Intellij IDEA, and Sublime Text project configs
-.settings/
-.project
-.classpath
-.buildpath
-.idea/
+/.settings/
+/.project
+/.classpath
+/.buildpath
+/.idea/
 *.iml
 *.ipr
 *.iws
+*.ids
 *.sublime-project
 *.sublime-workspace
+
+# Generated files
+src/querydsl/
+src/generated/
+src/main/webapp/
+src/main/webapp/js/
+src/main/webapp/css/
+nohup.out
 
 # OS and various viewers garbage
 Thumbs.db
 .DS_Store
+
+# Local testing properties
+src/*/resources/application-*.properties
+
+# Node modules and front-end generated resources
+node_modules/
+package-lock.json

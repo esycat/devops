@@ -33,6 +33,8 @@
 	abbrevCommit = true
 [push]
 	default = upstream
+[pull]
+	ff = only
 [diff]
 	tool = icdiff
 	compactionHeuristic = true
