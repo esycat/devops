@@ -1,3 +1,11 @@
+# Zsh completions
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="terminalparty"
 ZSH_THEME="esycat"
@@ -13,7 +21,6 @@ test -r ~/.envrc && . ~/.envrc
 test -r ~/.aliases && . ~/.aliases
 test -r ~/.fzf.zsh && . ~/.fzf.zsh
 
-DOCKER_DEFAULT_MACHINE="dev"
-if [ -n "$(docker-machine ls -q --filter name=$DOCKER_DEFAULT_MACHINE --filter state=running)" ] ; then
-    eval $(docker-machine env dev)
-fi
+# iTerm integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
