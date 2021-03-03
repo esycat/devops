@@ -5,6 +5,7 @@ alias ports="netstat -altu -np"
 alias top="htop"
 alias m="micro"
 alias pie="http"
+alias sc="sudo systemctl"
 
 case $OS in
     Linux)
